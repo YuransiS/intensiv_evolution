@@ -1,235 +1,162 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Інтенсив: Продажі через блог | Владислава Царенко</title>
+    <title>EVOLUTION | Інтенсив Владислави Царенко</title>
     
     <!-- TAILWIND CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- FONTS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- СЮДА ВСТАВИТЬ PIXEL ID (ДЛЯ ТАРГЕТОЛОГА) -->
-    <!-- 
+    <!-- CONFIG -->
     <script>
-        !function(f,b,e,v,n,t,s){...}(window, document,'script',...);
-        fbq('init', 'TVOY_PIXEL_ID'); 
-        fbq('track', 'PageView');
-    </script> 
-    -->
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        evo: {
+                            dark: '#050505',
+                            card: '#121212',
+                            red: '#D93025',
+                            text: '#E5E5E5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- PIXEL CODE PLACEHOLDER -->
+    <!-- <script> fbq('init', 'ID'); </script> -->
 
     <style>
         body {
-            font-family: 'Montserrat', sans-serif;
-            scroll-behavior: smooth;
+            background-color: #050505;
+            color: #E5E5E5;
+            overflow-x: hidden;
         }
-        
-        /* Анимации появления */
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
+
+        .bg-space {
+            background: 
+                radial-gradient(circle at 50% 0%, rgba(217, 48, 37, 0.12) 0%, transparent 60%),
+                #050505;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Анимации */
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
             opacity: 0;
             transform: translateY(20px);
         }
         
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Градиентный текст */
-        .text-gradient {
-            background: linear-gradient(90deg, #111827 0%, #4B5563 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        /* Кастомный скроллбар */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #888; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555; 
+        /* Градиент снизу фото, чтобы сгладить срез, если нужно */
+        .hero-fade-overlay {
+            background: linear-gradient(to top, #050505 0%, transparent 20%);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 antialiased overflow-x-hidden">
-
-    <!-- HEADER -->
-    <header class="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-xl font-bold tracking-widest uppercase">Evolution</div>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
-                <a href="#about" class="hover:text-black transition-colors">Про мене</a>
-                <a href="#cases" class="hover:text-black transition-colors">Кейси</a>
-                <a href="#form" class="hover:text-black transition-colors">Записатися</a>
-            </nav>
-            <a href="#form" class="bg-black text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-gray-800 transition-all hover:shadow-lg transform hover:-translate-y-0.5 hidden md:block">
-                Хочу на інтенсив
-            </a>
-        </div>
-    </header>
+<body class="bg-space antialiased">
 
     <!-- HERO SECTION -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
+    <!-- Added 'items-end' to align image to the bottom floor -->
+    <section class="relative min-h-screen flex flex-col justify-end md:justify-center overflow-hidden pt-24 md:pt-0">
+        
+        <!-- Background Glow -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-evo-red/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 h-full">
+            <div class="flex flex-col md:flex-row items-center md:items-end justify-between gap-8 h-full">
                 
-                <!-- Text Content -->
-                <div class="lg:w-1/2 fade-in-up">
-                    <div class="inline-block bg-gray-100 rounded-full px-4 py-1 mb-6">
-                        <span class="text-xs font-bold tracking-wide text-gray-600 uppercase">Інтенсив від Владислави Царенко</span>
+                <!-- Text Content (Left) -->
+                <div class="md:w-1/2 fade-in pb-10 md:pb-24 z-20">
+                    <div class="mb-6 inline-block border border-white/20 rounded-full px-4 py-1 backdrop-blur-sm">
+                        <span class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-gray-400 font-semibold">Evolution Program</span>
                     </div>
-                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-                        Навчись стабільно <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500">продавати через блог</span> та правильні сенси
+                    
+                    <h1 class="text-4xl md:text-7xl font-thin mb-6 leading-[1.1]">
+                        <span class="font-bold text-white">ПРОДАЖІ</span><br>
+                        ЧЕРЕЗ БЛОГ<br>
+                        ТА СЕНСИ
                     </h1>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        Ментор особистого й бізнес-росту. Навчаю масштабувати запуски і збільшувати продажі без вигорання.
+                    
+                    <p class="text-base md:text-lg text-gray-400 mb-8 font-light max-w-md border-l-2 border-evo-red pl-5">
+                        Ментор особистого й бізнес-росту. Навчаю масштабувати запуски і збільшувати продажі.
                     </p>
+
+                    <a href="#form" class="inline-flex items-center gap-3 bg-evo-red text-white px-8 py-4 md:px-10 md:py-5 text-sm uppercase tracking-widest font-bold hover:bg-red-700 transition-all hover:shadow-[0_0_30px_rgba(217,48,37,0.4)]">
+                        Записатись на інтенсив
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Hero Image Cutout (Right) -->
+                <!-- No borders, no grayscale, perfectly aligned to bottom -->
+                <div class="md:w-1/2 relative w-full flex justify-center md:justify-end fade-in z-10 mt-[-20px] md:mt-0" style="animation-delay: 0.2s;">
+                    <img src="hero_cutout.png" alt="Vladyslava Tsarenko" class="relative w-auto max-h-[50vh] md:max-h-[85vh] object-contain drop-shadow-2xl">
                     
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#form" class="text-center bg-black text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-gray-800 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1">
-                            Зайняти місце
-                        </a>
-                        <div class="flex items-center gap-3 px-4 py-4">
-                            <div class="flex -space-x-3">
-                                <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="photo_2025-01-29_16-43-39.jpg" alt="Student">
-                                <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="photo_2025-01-29_16-43-41.jpg" alt="Student">
-                                <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="photo_2025-01-29_16-43-42.jpg" alt="Student">
+                    <!-- Плавный переход в следующий блок (если фото обрезано ровно) -->
+                    <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#050505] to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POINT A (DO) -->
+    <section class="py-20 md:py-24 border-t border-white/5 bg-[#050505] relative z-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                <!-- Image Point A -->
+                <div class="md:w-1/2 flex justify-center fade-in">
+                    <div class="relative w-64 h-64 md:w-96 md:h-96">
+                        <!-- Вращающаяся орбита -->
+                        <div class="absolute inset-0 rounded-full border border-gray-800 animate-[spin_12s_linear_infinite]"></div>
+                        <img src="point_a.jpg" alt="Point A" class="w-full h-full object-cover rounded-full border border-gray-800 shadow-2xl grayscale opacity-80">
+                        <div class="absolute bottom-4 right-0 bg-red-900/90 backdrop-blur-md px-5 py-2 text-xs font-bold uppercase tracking-widest text-white shadow-lg">Точка А</div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="md:w-1/2 fade-in">
+                    <h2 class="text-3xl md:text-4xl font-thin uppercase mb-8">До: <span class="font-bold text-evo-red">Хаос та сумніви</span></h2>
+                    
+                    <ul class="space-y-8">
+                        <li class="flex items-start gap-5 group">
+                            <span class="text-evo-red text-xl mt-1 opacity-60 group-hover:opacity-100 transition duration-300"><i class="fa-solid fa-angle-right"></i></span>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-white">Страшно підняти чек</h3>
+                                <p class="text-sm text-gray-500 font-light leading-relaxed">Сумніви та невпевненість у своїй експертності. Здається, що клієнти підуть.</p>
                             </div>
-                            <span class="text-sm font-medium text-gray-600">Вже приєдналися</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hero Image -->
-                <div class="lg:w-1/2 relative fade-in-up delay-200">
-                    <div class="absolute -inset-4 bg-gradient-to-r from-gray-200 to-white rounded-full opacity-30 blur-3xl animate-pulse"></div>
-                    <img src="hero_image.JPG" alt="Vladyslava Tsarenko" class="relative rounded-3xl shadow-2xl w-full max-w-md mx-auto object-cover transform hover:scale-[1.02] transition-transform duration-500">
-                    
-                    <!-- Floating Badge -->
-                    <div class="absolute bottom-10 -left-6 bg-white p-4 rounded-2xl shadow-xl max-w-xs animate-bounce hidden md:block" style="animation-duration: 3s;">
-                        <p class="font-bold text-lg">Кейси 1000$ - 12000$</p>
-                        <p class="text-sm text-gray-500">Результати учнів</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PAIN POINTS (IS THIS YOU?) -->
-    <section class="py-20 bg-black text-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">Впізнаєш себе?</h2>
-                <p class="text-gray-400 text-lg">Чому ти досі не робиш бажаний результат</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <!-- Pain Item 1 -->
-                    <div class="flex items-start gap-4 bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-gray-600 transition-colors fade-in-up delay-100">
-                        <div class="text-red-500 text-2xl mt-1"><i class="fa-solid fa-xmark"></i></div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-2">Страшно підняти чек</h3>
-                            <p class="text-gray-400">Сумніви та невпевненість у своїй експертності не дають рости в доході.</p>
-                        </div>
-                    </div>
-                    <!-- Pain Item 2 -->
-                    <div class="flex items-start gap-4 bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-gray-600 transition-colors fade-in-up delay-200">
-                        <div class="text-red-500 text-2xl mt-1"><i class="fa-solid fa-bolt"></i></div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-2">Хаос в контенті</h3>
-                            <p class="text-gray-400">Немає розуміння, що і за чим публікувати. Працюєш багато, а грошей мало.</p>
-                        </div>
-                    </div>
-                    <!-- Pain Item 3 -->
-                    <div class="flex items-start gap-4 bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-gray-600 transition-colors fade-in-up delay-300">
-                        <div class="text-red-500 text-2xl mt-1"><i class="fa-solid fa-battery-empty"></i></div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-2">Працюєш до виснаження</h3>
-                            <p class="text-gray-400">Задовбуєшся роботою, рушаться стосунки, а дохід плаваючий ~36 000 грн.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative fade-in-up delay-200">
-                    <img src="point_a.jpg" alt="Pain Point" class="rounded-2xl shadow-2xl opacity-90 mx-auto max-h-[500px] object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CASE STUDIES -->
-    <section id="cases" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">Результати моїх учнів</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Це не просто цифри, це змінені життя та бізнеси.</p>
-            </div>
-
-            <!-- Grid of Cases -->
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Case 1: Masha -->
-                <div class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
-                    <img src="case_4.jpg" alt="Case Masha" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500">
-                </div>
-
-                <!-- Case 2: Bogdana -->
-                <div class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
-                    <img src="case_1.jpg" alt="Case Bogdana" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500">
-                </div>
-
-                <!-- Case 3: Kristina -->
-                <div class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
-                    <img src="case_3.jpg" alt="Case Kristina" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500">
-                </div>
-
-                <!-- Case 4: Tanya -->
-                <div class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
-                    <img src="case_5.jpg" alt="Case Tanya" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500">
-                </div>
-                
-                 <!-- Case 5: Diana (Full Width on Desktop) -->
-                 <div class="md:col-span-2 group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer max-w-3xl mx-auto">
-                    <img src="case_2.jpg" alt="Case Diana" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500">
-                </div>
-            </div>
-            
-            <!-- Result Promo -->
-            <div class="mt-16 bg-white p-8 rounded-3xl shadow-xl flex flex-col md:flex-row items-center gap-8 border border-gray-100">
-                <div class="md:w-1/3">
-                    <img src="point_b.jpg" alt="Result" class="rounded-2xl w-full object-cover shadow-md">
-                </div>
-                <div class="md:w-2/3">
-                    <h3 class="text-2xl font-bold mb-4">Ріст х2 ще під час навчання</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check-circle text-green-500"></i>
-                            <span>Одразу після навчання — дохід 100 000+ грн</span>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check-circle text-green-500"></i>
-                            <span>Поїхала перший раз за 1.5 роки у відпустку</span>
+                        <li class="flex items-start gap-5 group">
+                            <span class="text-evo-red text-xl mt-1 opacity-60 group-hover:opacity-100 transition duration-300"><i class="fa-solid fa-angle-right"></i></span>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-white">Працюєш на знос</h3>
+                                <p class="text-sm text-gray-500 font-light leading-relaxed">Дохід плаваючий ~36 000 грн. Рушаться стосунки, вигорання стає нормою.</p>
+                            </div>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check-circle text-green-500"></i>
-                            <span>Повний запис і броні на роботу на 2 місяці</span>
+                        <li class="flex items-start gap-5 group">
+                            <span class="text-evo-red text-xl mt-1 opacity-60 group-hover:opacity-100 transition duration-300"><i class="fa-solid fa-angle-right"></i></span>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-white">Хаос в контенті</h3>
+                                <p class="text-sm text-gray-500 font-light leading-relaxed">Є ідеї, але немає системи. Не розумієш, що публікувати, щоб купували.</p>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -237,163 +164,220 @@
         </div>
     </section>
 
-    <!-- ABOUT EXPERT -->
-    <section id="about" class="py-20 relative overflow-hidden">
+    <!-- TRANSITION IMAGE -->
+    <section class="py-16 md:py-24 bg-black/40">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-xl md:text-2xl font-thin uppercase tracking-[0.2em] mb-12 text-white/60">Твій шлях трансформації</h2>
+            <div class="relative inline-block group w-full max-w-5xl">
+                <div class="absolute -inset-1 bg-gradient-to-r from-evo-red to-purple-900/50 rounded-lg blur opacity-20 group-hover:opacity-50 transition duration-700"></div>
+                <img src="a_to_b.JPG" alt="Шлях від А до Б" class="relative rounded w-full border border-white/5 shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- POINT B (POSLE) -->
+    <section class="py-20 md:py-24 border-b border-white/5">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col-reverse md:flex-row items-center gap-12">
-                <div class="md:w-1/2 relative">
-                    <div class="absolute inset-0 bg-gray-900 rotate-3 rounded-3xl z-0 transform translate-x-2 translate-y-2"></div>
-                    <img src="a_to_b.JPG" alt="Vladyslava Expert" class="relative z-10 w-full rounded-3xl object-cover shadow-2xl h-[600px]">
-                </div>
-                <div class="md:w-1/2">
-                    <h2 class="text-3xl md:text-5xl font-bold mb-6">Хто веде інтенсив?</h2>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Владислава Царенко</h3>
-                    <p class="text-gray-600 mb-6">
-                        Ментор особистого й бізнес-росту. Автор програми Evolution.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center shrink-0 font-bold text-xl">01</div>
-                            <div>
-                                <h4 class="font-bold text-lg">Практик</h4>
-                                <p class="text-sm text-gray-500">713 публікацій, 4500+ підписників, живий блог з високою лояльністю.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center shrink-0 font-bold text-xl">02</div>
-                            <div>
-                                <h4 class="font-bold text-lg">Результати</h4>
-                                <p class="text-sm text-gray-500">Мої учні роблять запуски від 1000$ до 12000$ через правильні сенси та стратегію.</p>
-                            </div>
-                        </div>
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-16">
+                <!-- Image Point B -->
+                <div class="md:w-1/2 flex justify-center fade-in">
+                    <div class="relative w-64 h-64 md:w-96 md:h-96">
+                        <div class="absolute inset-0 rounded-full border border-evo-red/30 animate-[spin_15s_linear_infinite_reverse]"></div>
+                        <div class="absolute -inset-10 rounded-full bg-evo-red/10 blur-3xl"></div>
+                        <img src="point_b.jpg" alt="Point B" class="relative w-full h-full object-cover rounded-full border border-white/10 shadow-2xl">
+                        <div class="absolute bottom-4 left-0 bg-white text-black px-5 py-2 text-xs font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(255,255,255,0.3)]">Точка Б</div>
                     </div>
+                </div>
+
+                <!-- Content -->
+                <div class="md:w-1/2 fade-in">
+                    <h2 class="text-3xl md:text-4xl font-thin uppercase mb-8">Після: <span class="font-bold text-white">Масштаб та система</span></h2>
                     
-                    <div class="mt-8">
-                        <img src="footer_hero.jpg" alt="Instagram Profile" class="w-full max-w-sm rounded-xl shadow-lg border border-gray-200">
+                    <ul class="space-y-8">
+                        <li class="flex items-start gap-5">
+                            <span class="text-green-500 text-xl mt-1"><i class="fa-solid fa-check"></i></span>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-white">Дохід 100 000+ грн</h3>
+                                <p class="text-sm text-gray-400 font-light leading-relaxed">Вийшла на новий рівень доходу відразу після навчання. Запис на 2 місяці вперед.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-5">
+                            <span class="text-green-500 text-xl mt-1"><i class="fa-solid fa-check"></i></span>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-white">Ріст блогу х2</h3>
+                                <p class="text-sm text-gray-400 font-light leading-relaxed">Приріст +400 цільових підписників під час навчання без вкладень у рекламу.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-5">
+                            <span class="text-green-500 text-xl mt-1"><i class="fa-solid fa-check"></i></span>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-white">Свобода та кайф</h3>
+                                <p class="text-sm text-gray-400 font-light leading-relaxed">Поїхала у відпустку вперше за 1.5 роки. Повернула енергію та бажання творити.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section class="py-24 relative overflow-hidden">
+        <!-- Decoration Line -->
+        <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-evo-red/40 to-transparent"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-thin uppercase mb-4 tracking-tighter">Кейси <span class="font-bold text-white">учнів</span></h2>
+                <p class="text-evo-red text-sm tracking-[0.3em] uppercase font-bold">Real Results</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Case 1 -->
+                <div class="group relative overflow-hidden glass-card rounded-none border border-white/5 hover:border-evo-red/40 transition-all duration-500 cursor-pointer">
+                    <img src="case_1.jpg" alt="Богдана" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 filter saturate-50 group-hover:saturate-100">
+                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform">
+                        <p class="text-white font-bold text-lg uppercase tracking-wider">Богдана</p>
+                        <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Б'юті-майстер • 150 000 грн</p>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="group relative overflow-hidden glass-card rounded-none border border-white/5 hover:border-evo-red/40 transition-all duration-500 cursor-pointer">
+                    <img src="case_2.jpg" alt="Діана" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 filter saturate-50 group-hover:saturate-100">
+                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform">
+                        <p class="text-white font-bold text-lg uppercase tracking-wider">Діана</p>
+                        <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Сексолог • 4700$</p>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="group relative overflow-hidden glass-card rounded-none border border-white/5 hover:border-evo-red/40 transition-all duration-500 cursor-pointer">
+                    <img src="case_3.jpg" alt="Крістіна" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 filter saturate-50 group-hover:saturate-100">
+                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform">
+                        <p class="text-white font-bold text-lg uppercase tracking-wider">Крістіна</p>
+                        <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Нутриціолог • 80 000+ грн</p>
+                    </div>
+                </div>
+
+                <!-- Case 4 -->
+                <div class="group relative overflow-hidden glass-card rounded-none border border-white/5 hover:border-evo-red/40 transition-all duration-500 cursor-pointer">
+                    <img src="case_4.jpg" alt="Маша" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 filter saturate-50 group-hover:saturate-100">
+                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform">
+                        <p class="text-white font-bold text-lg uppercase tracking-wider">Маша</p>
+                        <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">SMM • 100 000 грн</p>
+                    </div>
+                </div>
+
+                <!-- Case 5 (Wide) -->
+                <div class="md:col-span-2 group relative overflow-hidden glass-card rounded-none border border-white/5 hover:border-evo-red/40 transition-all duration-500 cursor-pointer max-w-4xl mx-auto w-full">
+                    <img src="case_5.jpg" alt="Таня" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 filter saturate-50 group-hover:saturate-100">
+                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform">
+                        <p class="text-white font-bold text-lg uppercase tracking-wider">Таня</p>
+                        <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">SMM • 36 000 грн за 3 тижні</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FORM SECTION -->
-    <section id="form" class="py-24 bg-gray-900 text-white relative">
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute -top-20 -right-20 w-96 h-96 bg-gray-800 rounded-full blur-3xl opacity-50"></div>
-            <div class="absolute bottom-0 left-0 w-72 h-72 bg-gray-700 rounded-full blur-3xl opacity-30"></div>
+    <!-- FOOTER HERO & FORM -->
+    <section id="form" class="relative py-32 bg-evo-dark overflow-hidden">
+        <!-- Background Image blended -->
+        <div class="absolute inset-0 z-0 opacity-25">
+            <img src="footer_hero.jpg" alt="Background" class="w-full h-full object-cover grayscale">
+            <!-- Stronger gradient to fade photo into black -->
+            <div class="absolute inset-0 bg-gradient-to-t from-evo-dark via-evo-dark/90 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-evo-dark via-transparent to-transparent"></div>
         </div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-2xl mx-auto bg-white/5 backdrop-blur-lg p-8 md:p-12 rounded-3xl border border-gray-700 shadow-2xl">
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold mb-2">Заповни анкету на інтенсив</h2>
-                    <p class="text-gray-400">Менеджер зв'яжеться з тобою для підтвердження участі</p>
-                </div>
+            <div class="max-w-2xl mx-auto text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-thin uppercase mb-6 tracking-tight">Стань частиною <br><span class="font-bold text-evo-red drop-shadow-[0_0_15px_rgba(217,48,37,0.5)]">EVOLUTION</span></h2>
+                <p class="text-gray-400 font-light text-base md:text-lg">Залиш заявку на інтенсив. Це твій перший крок до системних продажів.</p>
+            </div>
 
-                <form name="submit-to-google-sheet" id="leadForm" class="space-y-6">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-400 mb-2">Твоє Ім'я</label>
-                        <input type="text" name="name" required class="w-full px-5 py-4 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all" placeholder="Введіть ім'я">
+            <div class="max-w-md mx-auto">
+                <form name="submit-to-google-sheet" class="space-y-6">
+                    <div class="group">
+                        <input type="text" name="name" required class="w-full bg-black/40 backdrop-blur-md border border-white/10 rounded-none px-6 py-5 text-white placeholder-gray-500 focus:outline-none focus:border-evo-red focus:bg-black/60 transition-all text-lg" placeholder="Твоє ім'я">
                     </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-400 mb-2">Номер телефону</label>
-                        <input type="tel" name="phone" required class="w-full px-5 py-4 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all" placeholder="+380...">
+                    <div class="group">
+                        <input type="tel" name="phone" required class="w-full bg-black/40 backdrop-blur-md border border-white/10 rounded-none px-6 py-5 text-white placeholder-gray-500 focus:outline-none focus:border-evo-red focus:bg-black/60 transition-all text-lg" placeholder="Номер телефону">
                     </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-400 mb-2">Нікнейм в Instagram</label>
-                        <div class="relative">
-                            <span class="absolute left-5 top-4 text-gray-500">@</span>
-                            <input type="text" name="instagram" required class="w-full pl-10 pr-5 py-4 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all" placeholder="username">
-                        </div>
+                    <div class="group">
+                        <input type="text" name="instagram" required class="w-full bg-black/40 backdrop-blur-md border border-white/10 rounded-none px-6 py-5 text-white placeholder-gray-500 focus:outline-none focus:border-evo-red focus:bg-black/60 transition-all text-lg" placeholder="@instagram">
                     </div>
-
-                    <button type="submit" class="w-full bg-white text-black font-bold py-4 rounded-xl text-lg hover:bg-gray-200 transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center gap-2">
-                        <span>Відправити заявку</span>
-                        <i class="fa-solid fa-arrow-right"></i>
+                    
+                    <button type="submit" class="w-full bg-white text-black font-extrabold uppercase tracking-[0.2em] py-5 hover:bg-evo-red hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl">
+                        Відправити заявку
                     </button>
                     
-                    <div id="formMessage" class="hidden text-center p-4 bg-green-500/20 text-green-300 rounded-xl border border-green-500/50">
-                        Дякую! Ваша заявка прийнята. Скоро зв'яжемося.
+                    <div id="formMessage" class="hidden text-center text-sm text-green-400 mt-4 font-mono">
+                        [ ЗАЯВКУ УСПІШНО НАДІСЛАНО ]
                     </div>
                 </form>
+            </div>
+            
+            <div class="text-center mt-20 border-t border-white/5 pt-8">
+                <p class="text-gray-600 text-[10px] uppercase tracking-[0.3em]">
+                    © 2025 Vladyslava Tsarenko. Evolution. All rights reserved.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-black text-gray-500 py-8 border-t border-gray-900">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2025 Vladyslava Tsarenko. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- LOGIC FOR GOOGLE SHEETS & ANIMATIONS -->
+    <!-- LOGIC -->
     <script>
-        // 1. Анимация появления при скролле
-        const observerOptions = {
-            threshold: 0.1
-        };
-
+        // Анимации при скролле
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    entry.target.style.animationName = 'fadeIn';
                     entry.target.style.animationPlayState = 'running';
-                    observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        // Находим все элементы с классом fade-in-up и ставим их на паузу изначально
-        document.querySelectorAll('.fade-in-up').forEach(el => {
+        document.querySelectorAll('.fade-in').forEach(el => {
             el.style.animationPlayState = 'paused';
             observer.observe(el);
         });
 
-        // 2. ОТПРАВКА ФОРМЫ (ЛОГИКА)
-        // ВНИМАНИЕ: Чтобы это работало с Google Таблицами, вам нужно создать Google Apps Script
-        // и вставить ссылку ниже вместо 'LINK_TO_YOUR_GOOGLE_SCRIPT_WEB_APP'
+        // Отправка формы (Google Scripts)
+        const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
         
-        const scriptURL = 'LINK_TO_YOUR_GOOGLE_SCRIPT_WEB_APP'; 
         const form = document.forms['submit-to-google-sheet'];
-        const messageDiv = document.getElementById('formMessage');
+        const msg = document.getElementById('formMessage');
 
         form.addEventListener('submit', e => {
             e.preventDefault();
             const btn = form.querySelector('button');
-            const originalBtnText = btn.innerHTML;
+            const originalText = btn.innerText;
             
-            // Анимация загрузки
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Відправка...';
+            btn.innerText = 'ВІДПРАВКА...';
+            btn.classList.add('opacity-70', 'cursor-not-allowed');
             btn.disabled = true;
 
-            // Если скрипт URL не настроен, просто имитируем успех (для демо)
-            if(scriptURL === 'LINK_TO_YOUR_GOOGLE_SCRIPT_WEB_APP') {
+            // Если URL не задан (демо режим)
+            if(scriptURL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
                 setTimeout(() => {
                     btn.hidden = true;
-                    messageDiv.classList.remove('hidden');
-                    console.log('Form submitted (Demo mode). Setup Google Script URL for real data.');
-                    // Тут можно добавить редирект на страницу "Спасибо"
-                    // window.location.href = "thanks.html";
-                }, 1500);
+                    msg.classList.remove('hidden');
+                }, 1000);
             } else {
-                // Реальная отправка
                 fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                     .then(response => {
                         btn.hidden = true;
-                        messageDiv.classList.remove('hidden');
+                        msg.classList.remove('hidden');
                         form.reset();
-                        // Событие для Пикселя (Лид)
-                        if(typeof fbq !== 'undefined') {
-                            fbq('track', 'Lead');
-                        }
+                        if(typeof fbq !== 'undefined') fbq('track', 'Lead');
                     })
                     .catch(error => {
                         console.error('Error!', error.message);
-                        btn.innerHTML = 'Помилка. Спробуйте ще раз.';
+                        btn.innerText = 'ПОМИЛКА';
                         btn.disabled = false;
+                        btn.classList.remove('opacity-70', 'cursor-not-allowed');
                     });
             }
         });
