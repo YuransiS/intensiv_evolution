@@ -63,26 +63,6 @@
         .hero-gradient {
             background: linear-gradient(to top, #050505 5%, transparent 100%);
         }
-
-        /* Modal Animation */
-        .modal-enter {
-            opacity: 0;
-            transform: scale(0.95);
-        }
-        .modal-enter-active {
-            opacity: 1;
-            transform: scale(1);
-            transition: opacity 300ms, transform 300ms;
-        }
-        .modal-exit {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .modal-exit-active {
-            opacity: 0;
-            transform: scale(0.95);
-            transition: opacity 200ms, transform 200ms;
-        }
     </style>
 </head>
 <body class="bg-space antialiased pb-20 md:pb-0">
@@ -144,10 +124,11 @@
                         </div>
                         
                         <!-- Timer -->
-                        <div class="flex gap-4 mb-6 text-center text-xs uppercase tracking-widest text-gray-500">
-                            <div><div class="text-2xl text-white font-bold font-mono">00</div>Днів</div>
-                            <div><div class="text-2xl text-white font-bold font-mono">14</div>Год</div>
-                            <div><div class="text-2xl text-white font-bold font-mono">35</div>Хв</div>
+                        <div class="flex gap-4 mb-6 text-center text-xs uppercase tracking-widest text-gray-500" id="countdown">
+                            <div><div class="text-2xl text-white font-bold font-mono bg-black/30 rounded p-2" id="days">00</div>Днів</div>
+                            <div><div class="text-2xl text-white font-bold font-mono bg-black/30 rounded p-2" id="hours">00</div>Год</div>
+                            <div><div class="text-2xl text-white font-bold font-mono bg-black/30 rounded p-2" id="minutes">00</div>Хв</div>
+                            <div><div class="text-2xl text-white font-bold font-mono bg-black/30 rounded p-2" id="seconds">00</div>Сек</div>
                         </div>
 
                         <button onclick="toggleModal(true)" class="block w-full text-center bg-evo-red hover:bg-red-700 text-white font-bold py-4 text-lg uppercase tracking-widest transition-all shadow-[0_0_20px_rgba(217,48,37,0.4)] rounded-lg">
@@ -252,23 +233,60 @@
         </div>
     </section>
 
-    <!-- 5. POINT A - B (TRANSFORMATION) -->
-    <section class="py-20 bg-black">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl md:text-4xl font-light uppercase">Це твій момент, щоб прибрати хаос</h2>
-                <p class="text-gray-500 mt-2">Чітко, без перевантаження.</p>
-            </div>
-            
-            <div class="max-w-4xl mx-auto mb-10">
-                <img src="a_to_b.JPG" alt="Transformation A to B" class="w-full rounded-xl shadow-2xl border border-white/10">
+    <!-- 5. POINT A - B (TRANSFORMATION) MOBILE ORDER FIXED -->
+    <section class="py-24 bg-black relative overflow-hidden">
+        <!-- Decoration background -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0a] to-black"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-evo-red/5 blur-[120px] rounded-full"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-thin uppercase mb-4">Твій шлях <span class="font-bold text-white">трансформації</span></h2>
+                <p class="text-gray-500 uppercase tracking-widest text-sm">Кейс: Марія Шпаковська, SMM-спеціаліст</p>
             </div>
 
-            <div class="text-center max-w-2xl mx-auto">
-                <p class="text-lg md:text-xl text-white font-medium leading-relaxed">
-                    Клієнти починають купувати твій продукт <span class="text-evo-red font-bold">регулярно</span> — за реально працюючою схемою, а не випадково. 
-                    <br><br>
-                    На інтенсиві я покажу, як запустити цю систему у себе.
+            <div class="relative max-w-6xl mx-auto">
+                <div class="flex flex-col md:grid md:grid-cols-3 items-center gap-12 md:gap-8">
+                    
+                    <!-- 1. POINT A (Order 1 on mobile) -->
+                    <div class="order-1 md:order-1 flex flex-col items-center md:items-end md:pr-4 relative group w-full">
+                        <div class="relative w-full max-w-xs rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                            <img src="point_a.jpg" alt="Марія До" class="w-full h-auto object-cover">
+                            <div class="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-bold text-gray-300 border-l-2 border-red-500 uppercase">До: Хаос</div>
+                        </div>
+                        <div class="mt-4 text-center md:text-right w-full max-w-xs">
+                            <p class="text-2xl font-bold text-gray-500 mb-1">~36 000 грн</p>
+                            <p class="text-sm text-gray-500">Сумніви, страх підняти чек, виснаження</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. EXPERT (Order 2 on mobile - MIDDLE) -->
+                    <div class="order-2 md:order-2 relative h-[350px] md:h-[500px] flex items-end justify-center z-20 w-full mb-8 md:mb-0">
+                        <img src="expert_green.png" alt="Vladyslava Expert" class="relative h-full object-contain drop-shadow-[0_0_25px_rgba(217,48,37,0.5)]">
+                        <div class="absolute bottom-4 bg-evo-red text-white px-6 py-2 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg">
+                            Система Evolution
+                        </div>
+                    </div>
+
+                    <!-- 3. POINT B (Order 3 on mobile) -->
+                    <div class="order-3 md:order-3 flex flex-col items-center md:items-start md:pl-4 relative group w-full">
+                        <div class="relative w-full max-w-xs rounded-2xl overflow-hidden border-2 border-evo-red/50 shadow-[0_0_30px_rgba(217,48,37,0.15)]">
+                            <img src="point_b.jpg" alt="Марія Після" class="w-full h-auto object-cover">
+                            <div class="absolute bottom-4 left-4 bg-white text-black px-3 py-1 text-xs font-bold border-l-2 border-evo-red uppercase">Після: Масштаб</div>
+                        </div>
+                        <div class="mt-4 text-center md:text-left w-full max-w-xs">
+                            <p class="text-3xl font-bold text-white mb-1">100 000 грн</p>
+                            <p class="text-sm text-gray-400">Ясність у діях, впевненість, регулярні продажі</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="text-center mt-20 max-w-2xl mx-auto">
+                <p class="text-lg text-gray-300">
+                    <span class="text-evo-red font-bold">Марія Шпаковська</span> пройшла шлях від вигорання до системного доходу. <br>
+                    На інтенсиві ми розберемо інструменти, які дозволили їй зробити цей ривок.
                 </p>
             </div>
         </div>
@@ -329,15 +347,24 @@
             <h2 class="text-3xl md:text-5xl text-center font-bold uppercase mb-12">Результати <span class="text-evo-red">учнів</span></h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Case Images from files -->
-                <img src="case_1.jpg" alt="Case 1" class="w-full h-auto rounded-lg opacity-80 hover:opacity-100 transition duration-500">
-                <img src="case_2.jpg" alt="Case 2" class="w-full h-auto rounded-lg opacity-80 hover:opacity-100 transition duration-500">
-                <img src="case_3.jpg" alt="Case 3" class="w-full h-auto rounded-lg opacity-80 hover:opacity-100 transition duration-500">
-                <img src="case_4.jpg" alt="Case 4" class="w-full h-auto rounded-lg opacity-80 hover:opacity-100 transition duration-500">
-                <div class="md:col-span-2 lg:col-span-2">
-                    <img src="case_5.jpg" alt="Case 5" class="w-full h-auto rounded-lg opacity-80 hover:opacity-100 transition duration-500">
+                <!-- Case Images -->
+                <div onclick="openLightbox('case_1.jpg')" class="cursor-pointer overflow-hidden rounded-lg group">
+                    <img src="case_1.jpg" alt="Case 1" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                </div>
+                <div onclick="openLightbox('case_2.jpg')" class="cursor-pointer overflow-hidden rounded-lg group">
+                    <img src="case_2.jpg" alt="Case 2" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                </div>
+                <div onclick="openLightbox('case_3.jpg')" class="cursor-pointer overflow-hidden rounded-lg group">
+                    <img src="case_3.jpg" alt="Case 3" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                </div>
+                <div onclick="openLightbox('case_4.jpg')" class="cursor-pointer overflow-hidden rounded-lg group">
+                    <img src="case_4.jpg" alt="Case 4" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                </div>
+                <div onclick="openLightbox('case_5.jpg')" class="md:col-span-2 lg:col-span-2 cursor-pointer overflow-hidden rounded-lg group">
+                    <img src="case_5.jpg" alt="Case 5" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
                 </div>
             </div>
+            <p class="text-center text-gray-500 text-sm mt-4">Натисніть на зображення, щоб збільшити</p>
         </div>
     </section>
 
@@ -411,44 +438,34 @@
         Evolution 2025. Всі права захищено.
     </footer>
 
-    <!-- MODAL POPUP (Hidden by default) -->
+    <!-- MODAL POPUP -->
     <div id="modal" class="fixed inset-0 z-[100] hidden">
-        <!-- Overlay -->
         <div class="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300" onclick="toggleModal(false)"></div>
-        
-        <!-- Modal Content -->
         <div class="relative z-10 w-full h-full flex items-center justify-center p-4">
             <div class="bg-[#121212] border border-evo-red/30 w-full max-w-md rounded-3xl p-8 relative shadow-[0_0_50px_rgba(217,48,37,0.2)] transform transition-all duration-300 scale-100">
-                <!-- Close Button -->
                 <button onclick="toggleModal(false)" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
-
                 <div class="text-center mb-6">
                     <h2 class="text-2xl font-bold uppercase mb-2">Зареєструватись</h2>
                     <p class="text-gray-400 text-sm">Отримай доступ до інтенсиву та бонуси.</p>
                 </div>
-
                 <form name="submit-to-google-sheet" class="space-y-4">
-                    <div>
-                        <input type="text" name="name" required class="w-full bg-black/50 border border-white/20 rounded-xl p-4 text-white focus:border-evo-red focus:outline-none transition-colors placeholder-gray-500" placeholder="Ваше ім'я">
-                    </div>
-                    <div>
-                        <input type="tel" name="phone" required class="w-full bg-black/50 border border-white/20 rounded-xl p-4 text-white focus:border-evo-red focus:outline-none transition-colors placeholder-gray-500" placeholder="Телефон">
-                    </div>
-                    <div>
-                        <input type="text" name="instagram" required class="w-full bg-black/50 border border-white/20 rounded-xl p-4 text-white focus:border-evo-red focus:outline-none transition-colors placeholder-gray-500" placeholder="@Нікнейм">
-                    </div>
-                    
-                    <button type="submit" class="w-full bg-evo-red hover:bg-red-700 text-white font-bold py-4 uppercase tracking-widest transition-all rounded-full shadow-lg mt-2">
-                        Приєднатись безкоштовно
-                    </button>
-                    
-                    <div id="formMessage" class="hidden text-center text-green-400 mt-2 text-sm">
-                        Ви успішно зареєстровані!
-                    </div>
+                    <input type="text" name="name" required class="w-full bg-black/50 border border-white/20 rounded-xl p-4 text-white focus:border-evo-red focus:outline-none transition-colors placeholder-gray-500" placeholder="Ваше ім'я">
+                    <input type="tel" name="phone" required class="w-full bg-black/50 border border-white/20 rounded-xl p-4 text-white focus:border-evo-red focus:outline-none transition-colors placeholder-gray-500" placeholder="Телефон">
+                    <button type="submit" class="w-full bg-evo-red hover:bg-red-700 text-white font-bold py-4 uppercase tracking-widest transition-all rounded-full shadow-lg mt-2">Приєднатись безкоштовно</button>
+                    <div id="formMessage" class="hidden text-center text-green-400 mt-2 text-sm">Ви успішно зареєстровані!</div>
                 </form>
             </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="fixed inset-0 z-[110] hidden" onclick="closeLightbox()">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-lg"></div>
+        <div class="relative z-20 w-full h-full flex items-center justify-center p-4">
+            <img id="lightbox-img" src="" alt="Full size" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl">
+            <button class="absolute top-6 right-6 text-white text-4xl hover:text-evo-red transition">&times;</button>
         </div>
     </div>
 
@@ -461,19 +478,60 @@
 
     <!-- SCRIPTS -->
     <script>
-        // Modal Logic
+        // --- TIMER LOGIC ---
+        function startTimer(duration, display) {
+            let timer = duration, days, hours, minutes, seconds;
+            setInterval(function () {
+                days = Math.floor(timer / (24 * 60 * 60));
+                let timerMod = timer % (24 * 60 * 60);
+                hours = Math.floor(timerMod / (60 * 60));
+                timerMod = timerMod % (60 * 60);
+                minutes = Math.floor(timerMod / 60);
+                seconds = Math.floor(timerMod % 60);
+
+                document.getElementById('days').textContent = days < 10 ? "0" + days : days;
+                document.getElementById('hours').textContent = hours < 10 ? "0" + hours : hours;
+                document.getElementById('minutes').textContent = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById('seconds').textContent = seconds < 10 ? "0" + seconds : seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            let timeInSeconds = (14 * 60 * 60) + (35 * 60);
+            startTimer(timeInSeconds, document.querySelector('#countdown'));
+        };
+
+        // --- MODAL & LIGHTBOX LOGIC ---
         function toggleModal(show) {
             const modal = document.getElementById('modal');
             if (show) {
                 modal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden'; // Stop scrolling
+                document.body.style.overflow = 'hidden';
             } else {
                 modal.classList.add('hidden');
-                document.body.style.overflow = ''; // Resume scrolling
+                document.body.style.overflow = '';
             }
         }
 
-        // Google Sheet Integration
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lb.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // --- FORM SUBMIT LOGIC ---
         const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
         const form = document.forms['submit-to-google-sheet'];
         const msg = document.getElementById('formMessage');
@@ -481,12 +539,10 @@
         form.addEventListener('submit', e => {
             e.preventDefault();
             const btn = form.querySelector('button');
-            const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
             btn.disabled = true;
             
             if(scriptURL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
-                // Demo
                 setTimeout(() => {
                     btn.hidden = true;
                     msg.classList.remove('hidden');
