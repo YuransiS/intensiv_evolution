@@ -63,17 +63,37 @@
         .hero-gradient {
             background: linear-gradient(to top, #050505 5%, transparent 100%);
         }
+
+        /* Modal Animation */
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        .modal-enter-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 300ms, transform 300ms;
+        }
+        .modal-exit {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .modal-exit-active {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 200ms, transform 200ms;
+        }
     </style>
 </head>
 <body class="bg-space antialiased pb-20 md:pb-0">
 
     <!-- HEADER -->
-    <nav class="fixed w-full z-50 bg-evo-dark/80 backdrop-blur-md border-b border-white/5">
+    <nav class="fixed w-full z-40 bg-evo-dark/80 backdrop-blur-md border-b border-white/5">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-xl font-bold tracking-[0.2em] uppercase">Evolution</div>
-            <a href="#form" class="hidden md:block bg-evo-red text-white px-6 py-2 text-sm font-bold uppercase tracking-wider hover:bg-red-700 transition-all">
+            <button onclick="toggleModal(true)" class="hidden md:block bg-evo-red text-white px-6 py-2 text-sm font-bold uppercase tracking-wider hover:bg-red-700 transition-all rounded-full">
                 Приєднатись безкоштовно
-            </a>
+            </button>
         </div>
     </nav>
 
@@ -94,7 +114,6 @@
             <div class="flex flex-col md:flex-row items-end gap-8">
                 <!-- Text Content -->
                 <div class="md:w-3/5 pb-12 md:pb-24 z-20">
-                    <!-- ИСПРАВЛЕНИЕ ЗДЕСЬ: whitespace-nowrap -->
                     <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
                         ЗРОБИЛА ПРОДАЖІВ ЧЕРЕЗ БЛОГ НА <br class="md:hidden"> <span class="text-evo-red whitespace-nowrap">7 000 000+ ГРН</span>
                     </h1>
@@ -131,9 +150,9 @@
                             <div><div class="text-2xl text-white font-bold font-mono">35</div>Хв</div>
                         </div>
 
-                        <a href="#form" class="block w-full text-center bg-evo-red hover:bg-red-700 text-white font-bold py-4 text-lg uppercase tracking-widest transition-all shadow-[0_0_20px_rgba(217,48,37,0.4)]">
+                        <button onclick="toggleModal(true)" class="block w-full text-center bg-evo-red hover:bg-red-700 text-white font-bold py-4 text-lg uppercase tracking-widest transition-all shadow-[0_0_20px_rgba(217,48,37,0.4)] rounded-lg">
                             Приєднатись
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -297,9 +316,9 @@
             </div>
             
             <div class="text-center mt-12">
-                <a href="#form" class="inline-block bg-white text-black hover:bg-gray-200 font-bold py-4 px-12 text-lg uppercase tracking-widest transition-all">
+                <button onclick="toggleModal(true)" class="inline-block bg-white text-black hover:bg-gray-200 font-bold py-4 px-12 text-lg uppercase tracking-widest transition-all rounded-full">
                     Зайняти місце
-                </a>
+                </button>
             </div>
         </div>
     </section>
@@ -332,9 +351,9 @@
             <p class="text-gray-400 mb-10">
                 Ви можете робити нескінченні проби, чекати невідомо коли результату… або зробити перший крок прям зараз.
             </p>
-            <a href="#form" class="inline-block border border-white text-white hover:bg-white hover:text-black font-bold py-3 px-8 uppercase tracking-widest transition-all">
+            <button onclick="toggleModal(true)" class="inline-block border border-white text-white hover:bg-white hover:text-black font-bold py-3 px-8 uppercase tracking-widest transition-all rounded-full">
                 Зробити перший крок
-            </a>
+            </button>
         </div>
     </section>
 
@@ -387,22 +406,41 @@
         </div>
     </section>
 
-    <!-- 10. REGISTRATION FORM (ANCHOR) -->
-    <section id="form" class="py-24 bg-black relative">
-        <div class="absolute inset-0 opacity-20 bg-[url('footer_hero.jpg')] bg-cover bg-center"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent"></div>
+    <!-- FOOTER -->
+    <footer class="bg-black py-8 text-center text-gray-600 text-xs uppercase tracking-widest border-t border-white/5">
+        Evolution 2025. Всі права захищено.
+    </footer>
 
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-xl mx-auto glass-card p-8 md:p-12 rounded-2xl border border-evo-red/30 shadow-[0_0_50px_rgba(217,48,37,0.15)]">
-                <h2 class="text-3xl font-bold text-center mb-2 uppercase">Зареєструватись</h2>
-                <p class="text-center text-gray-400 mb-8 text-sm">Вкажіть свої дані, щоб отримати доступ до інтенсиву та бонуси.</p>
+    <!-- MODAL POPUP (Hidden by default) -->
+    <div id="modal" class="fixed inset-0 z-[100] hidden">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300" onclick="toggleModal(false)"></div>
+        
+        <!-- Modal Content -->
+        <div class="relative z-10 w-full h-full flex items-center justify-center p-4">
+            <div class="bg-[#121212] border border-evo-red/30 w-full max-w-md rounded-3xl p-8 relative shadow-[0_0_50px_rgba(217,48,37,0.2)] transform transition-all duration-300 scale-100">
+                <!-- Close Button -->
+                <button onclick="toggleModal(false)" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold uppercase mb-2">Зареєструватись</h2>
+                    <p class="text-gray-400 text-sm">Отримай доступ до інтенсиву та бонуси.</p>
+                </div>
 
                 <form name="submit-to-google-sheet" class="space-y-4">
-                    <input type="text" name="name" required class="w-full bg-black/50 border border-white/20 p-4 text-white focus:border-evo-red focus:outline-none transition-colors" placeholder="Ім'я">
-                    <input type="tel" name="phone" required class="w-full bg-black/50 border border-white/20 p-4 text-white focus:border-evo-red focus:outline-none transition-colors" placeholder="Телефон">
-                    <input type="text" name="instagram" required class="w-full bg-black/50 border border-white/20 p-4 text-white focus:border-evo-red focus:outline-none transition-colors" placeholder="@Нікнейм">
+                    <div>
+                        <input type="text" name="name" required class="w-full bg-black/50 border border-white/20 rounded-xl p-4 text-white focus:border-evo-red focus:outline-none transition-colors placeholder-gray-500" placeholder="Ваше ім'я">
+                    </div>
+                    <div>
+                        <input type="tel" name="phone" required class="w-full bg-black/50 border border-white/20 rounded-xl p-4 text-white focus:border-evo-red focus:outline-none transition-colors placeholder-gray-500" placeholder="Телефон">
+                    </div>
+                    <div>
+                        <input type="text" name="instagram" required class="w-full bg-black/50 border border-white/20 rounded-xl p-4 text-white focus:border-evo-red focus:outline-none transition-colors placeholder-gray-500" placeholder="@Нікнейм">
+                    </div>
                     
-                    <button type="submit" class="w-full bg-evo-red hover:bg-red-700 text-white font-bold py-4 uppercase tracking-widest transition-all mt-4">
+                    <button type="submit" class="w-full bg-evo-red hover:bg-red-700 text-white font-bold py-4 uppercase tracking-widest transition-all rounded-full shadow-lg mt-2">
                         Приєднатись безкоштовно
                     </button>
                     
@@ -411,22 +449,30 @@
                     </div>
                 </form>
             </div>
-            
-            <footer class="text-center text-gray-600 text-xs mt-12 uppercase tracking-widest">
-                Evolution 2025. Всі права захищено.
-            </footer>
         </div>
-    </section>
+    </div>
 
     <!-- FLOATING CTA (MOBILE ONLY) -->
     <div class="fixed bottom-6 left-6 right-6 z-50 md:hidden">
-        <a href="#form" class="block w-full bg-evo-red text-white text-center font-bold py-4 rounded-full shadow-2xl uppercase tracking-widest text-sm animate-bounce hover:animate-none">
+        <button onclick="toggleModal(true)" class="block w-full bg-evo-red text-white text-center font-bold py-4 rounded-full shadow-2xl uppercase tracking-widest text-sm animate-bounce hover:animate-none">
             Приєднатись безкоштовно
-        </a>
+        </button>
     </div>
 
     <!-- SCRIPTS -->
     <script>
+        // Modal Logic
+        function toggleModal(show) {
+            const modal = document.getElementById('modal');
+            if (show) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Stop scrolling
+            } else {
+                modal.classList.add('hidden');
+                document.body.style.overflow = ''; // Resume scrolling
+            }
+        }
+
         // Google Sheet Integration
         const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
         const form = document.forms['submit-to-google-sheet'];
@@ -435,9 +481,12 @@
         form.addEventListener('submit', e => {
             e.preventDefault();
             const btn = form.querySelector('button');
+            const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+            btn.disabled = true;
             
             if(scriptURL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+                // Demo
                 setTimeout(() => {
                     btn.hidden = true;
                     msg.classList.remove('hidden');
@@ -450,7 +499,11 @@
                         form.reset();
                         if(typeof fbq !== 'undefined') fbq('track', 'Lead');
                     })
-                    .catch(error => console.error('Error!', error.message));
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        btn.innerHTML = 'Помилка';
+                        btn.disabled = false;
+                    });
             }
         });
     </script>
