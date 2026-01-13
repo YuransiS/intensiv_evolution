@@ -10,7 +10,7 @@
     
     <!-- FONTS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- CONFIG -->
     <script>
@@ -44,323 +44,403 @@
         }
 
         .bg-space {
-            background: 
-                radial-gradient(circle at 50% 0%, rgba(217, 48, 37, 0.12) 0%, transparent 60%),
-                #050505;
+            background: radial-gradient(circle at 50% 0%, #1a0505 0%, #050505 60%);
         }
 
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* Анимации */
-        .fade-in {
-            animation: fadeIn 1s ease-out forwards;
-            opacity: 0;
-            transform: translateY(20px);
+        /* FAQ Accordion Styles */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
         }
         
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Градиент снизу фото, чтобы сгладить срез, если нужно */
-        .hero-fade-overlay {
-            background: linear-gradient(to top, #050505 0%, transparent 20%);
+        .hero-gradient {
+            background: linear-gradient(to top, #050505 5%, transparent 100%);
         }
     </style>
 </head>
-<body class="bg-space antialiased">
+<body class="bg-space antialiased pb-20 md:pb-0">
 
-    <!-- HERO SECTION -->
-    <!-- Added 'items-end' to align image to the bottom floor -->
-    <section class="relative min-h-screen flex flex-col justify-end md:justify-center overflow-hidden pt-24 md:pt-0">
-        
-        <!-- Background Glow -->
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-evo-red/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <!-- HEADER -->
+    <nav class="fixed w-full z-50 bg-evo-dark/80 backdrop-blur-md border-b border-white/5">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold tracking-[0.2em] uppercase">Evolution</div>
+            <a href="#form" class="hidden md:block bg-evo-red text-white px-6 py-2 text-sm font-bold uppercase tracking-wider hover:bg-red-700 transition-all">
+                Приєднатись безкоштовно
+            </a>
+        </div>
+    </nav>
 
-        <div class="container mx-auto px-6 relative z-10 h-full">
-            <div class="flex flex-col md:flex-row items-center md:items-end justify-between gap-8 h-full">
-                
-                <!-- Text Content (Left) -->
-                <div class="md:w-1/2 fade-in pb-10 md:pb-24 z-20">
-                    <div class="mb-6 inline-block border border-white/20 rounded-full px-4 py-1 backdrop-blur-sm">
-                        <span class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-gray-400 font-semibold">Evolution Program</span>
-                    </div>
-                    
-                    <h1 class="text-4xl md:text-7xl font-thin mb-6 leading-[1.1]">
-                        <span class="font-bold text-white">ПРОДАЖІ</span><br>
-                        ЧЕРЕЗ БЛОГ<br>
-                        ТА СЕНСИ
+    <!-- 1. HERO BLOCK -->
+    <section class="relative min-h-screen pt-28 flex flex-col justify-end overflow-hidden">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-evo-red/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Top Tag -->
+            <div class="flex justify-center md:justify-start mb-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 border border-evo-red/50 rounded-full bg-evo-red/10">
+                    <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                    <span class="text-xs uppercase tracking-widest font-bold text-white">Безкоштовний інтенсив</span>
+                    <span class="text-xs text-gray-400 border-l border-gray-600 pl-2 ml-1">СКОРО</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-end gap-8">
+                <!-- Text Content -->
+                <div class="md:w-3/5 pb-12 md:pb-24 z-20">
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">
+                        ЗРОБИЛА ПРОДАЖІВ ЧЕРЕЗ БЛОГ НА <span class="text-evo-red">7 000 000+ ГРН</span>
                     </h1>
-                    
-                    <p class="text-base md:text-lg text-gray-400 mb-8 font-light max-w-md border-l-2 border-evo-red pl-5">
-                        Ментор особистого й бізнес-росту. Навчаю масштабувати запуски і збільшувати продажі.
+                    <p class="text-xl md:text-2xl text-gray-300 font-light mb-8">
+                        З хаосу — в систему, яка стабільно приносить продажі з блогу
                     </p>
 
-                    <a href="#form" class="inline-flex items-center gap-3 bg-evo-red text-white px-8 py-4 md:px-10 md:py-5 text-sm uppercase tracking-widest font-bold hover:bg-red-700 transition-all hover:shadow-[0_0_30px_rgba(217,48,37,0.4)]">
-                        Записатись на інтенсив
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Hero Image Cutout (Right) -->
-                <!-- No borders, no grayscale, perfectly aligned to bottom -->
-                <div class="md:w-1/2 relative w-full flex justify-center md:justify-end fade-in z-10 mt-[-20px] md:mt-0" style="animation-delay: 0.2s;">
-                    <img src="hero_cutout.png" alt="Vladyslava Tsarenko" class="relative w-auto max-h-[50vh] md:max-h-[85vh] object-contain drop-shadow-2xl">
-                    
-                    <!-- Плавный переход в следующий блок (если фото обрезано ровно) -->
-                    <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#050505] to-transparent"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- POINT A (DO) -->
-    <section class="py-20 md:py-24 border-t border-white/5 bg-[#050505] relative z-20">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-                <!-- Image Point A -->
-                <div class="md:w-1/2 flex justify-center fade-in">
-                    <div class="relative w-64 h-64 md:w-96 md:h-96">
-                        <!-- Вращающаяся орбита -->
-                        <div class="absolute inset-0 rounded-full border border-gray-800 animate-[spin_12s_linear_infinite]"></div>
-                        <img src="point_a.jpg" alt="Point A" class="w-full h-full object-cover rounded-full border border-gray-800 shadow-2xl grayscale opacity-80">
-                        <div class="absolute bottom-4 right-0 bg-red-900/90 backdrop-blur-md px-5 py-2 text-xs font-bold uppercase tracking-widest text-white shadow-lg">Точка А</div>
-                    </div>
-                </div>
-
-                <!-- Content -->
-                <div class="md:w-1/2 fade-in">
-                    <h2 class="text-3xl md:text-4xl font-thin uppercase mb-8">До: <span class="font-bold text-evo-red">Хаос та сумніви</span></h2>
-                    
-                    <ul class="space-y-8">
-                        <li class="flex items-start gap-5 group">
-                            <span class="text-evo-red text-xl mt-1 opacity-60 group-hover:opacity-100 transition duration-300"><i class="fa-solid fa-angle-right"></i></span>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2 text-white">Страшно підняти чек</h3>
-                                <p class="text-sm text-gray-500 font-light leading-relaxed">Сумніви та невпевненість у своїй експертності. Здається, що клієнти підуть.</p>
-                            </div>
+                    <ul class="space-y-3 mb-10 text-gray-400 font-medium">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-evo-red"></i> Від $5 000 до $50 000 на місяць
                         </li>
-                        <li class="flex items-start gap-5 group">
-                            <span class="text-evo-red text-xl mt-1 opacity-60 group-hover:opacity-100 transition duration-300"><i class="fa-solid fa-angle-right"></i></span>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2 text-white">Працюєш на знос</h3>
-                                <p class="text-sm text-gray-500 font-light leading-relaxed">Дохід плаваючий ~36 000 грн. Рушаться стосунки, вигорання стає нормою.</p>
-                            </div>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-evo-red"></i> Без впарювання
                         </li>
-                        <li class="flex items-start gap-5 group">
-                            <span class="text-evo-red text-xl mt-1 opacity-60 group-hover:opacity-100 transition duration-300"><i class="fa-solid fa-angle-right"></i></span>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2 text-white">Хаос в контенті</h3>
-                                <p class="text-sm text-gray-500 font-light leading-relaxed">Є ідеї, але немає системи. Не розумієш, що публікувати, щоб купували.</p>
-                            </div>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-evo-red"></i> Без складних схем
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-evo-red"></i> Працює навіть з малими охопленнями
                         </li>
                     </ul>
+
+                    <!-- Offer Box -->
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm max-w-md">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-gray-500 line-through text-lg">2900 грн</span>
+                            <span class="text-evo-red font-bold text-2xl uppercase">БЕЗКОШТОВНО</span>
+                        </div>
+                        
+                        <!-- Timer -->
+                        <div class="flex gap-4 mb-6 text-center text-xs uppercase tracking-widest text-gray-500">
+                            <div><div class="text-2xl text-white font-bold font-mono">00</div>Днів</div>
+                            <div><div class="text-2xl text-white font-bold font-mono">14</div>Год</div>
+                            <div><div class="text-2xl text-white font-bold font-mono">35</div>Хв</div>
+                        </div>
+
+                        <a href="#form" class="block w-full text-center bg-evo-red hover:bg-red-700 text-white font-bold py-4 text-lg uppercase tracking-widest transition-all shadow-[0_0_20px_rgba(217,48,37,0.4)]">
+                            Приєднатись
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="md:w-2/5 relative w-full flex justify-center items-end mt-[-50px] md:mt-0 z-10">
+                    <img src="hero_cutout.png" alt="Vladyslava Tsarenko" class="w-auto max-h-[50vh] md:max-h-[85vh] object-contain drop-shadow-2xl">
+                    <div class="absolute bottom-0 w-full h-32 hero-gradient"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TRANSITION IMAGE -->
-    <section class="py-16 md:py-24 bg-black/40">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-xl md:text-2xl font-thin uppercase tracking-[0.2em] mb-12 text-white/60">Твій шлях трансформації</h2>
-            <div class="relative inline-block group w-full max-w-5xl">
-                <div class="absolute -inset-1 bg-gradient-to-r from-evo-red to-purple-900/50 rounded-lg blur opacity-20 group-hover:opacity-50 transition duration-700"></div>
-                <img src="a_to_b.JPG" alt="Шлях від А до Б" class="relative rounded w-full border border-white/5 shadow-2xl">
-            </div>
-        </div>
-    </section>
-
-    <!-- POINT B (POSLE) -->
-    <section class="py-20 md:py-24 border-b border-white/5">
+    <!-- 2. BONUSES -->
+    <section class="py-20 bg-evo-card border-t border-white/5">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-16">
-                <!-- Image Point B -->
-                <div class="md:w-1/2 flex justify-center fade-in">
-                    <div class="relative w-64 h-64 md:w-96 md:h-96">
-                        <div class="absolute inset-0 rounded-full border border-evo-red/30 animate-[spin_15s_linear_infinite_reverse]"></div>
-                        <div class="absolute -inset-10 rounded-full bg-evo-red/10 blur-3xl"></div>
-                        <img src="point_b.jpg" alt="Point B" class="relative w-full h-full object-cover rounded-full border border-white/10 shadow-2xl">
-                        <div class="absolute bottom-4 left-0 bg-white text-black px-5 py-2 text-xs font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(255,255,255,0.3)]">Точка Б</div>
-                    </div>
+            <h2 class="text-3xl md:text-4xl font-light uppercase text-center mb-12">Бонуси для <span class="font-bold text-evo-red">всіх учасників</span></h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <!-- Bonus 1 -->
+                <div class="glass-card p-8 rounded-none border-l-4 border-l-evo-red hover:bg-white/5 transition-all">
+                    <div class="text-4xl text-gray-600 font-bold mb-4 opacity-30">01</div>
+                    <h3 class="text-xl font-bold mb-2">Планер цілей 2026</h3>
+                    <p class="text-gray-400 text-sm">Який не дасть проїбати твої амбітні цілі на 2026 рік.</p>
                 </div>
-
-                <!-- Content -->
-                <div class="md:w-1/2 fade-in">
-                    <h2 class="text-3xl md:text-4xl font-thin uppercase mb-8">Після: <span class="font-bold text-white">Масштаб та система</span></h2>
-                    
-                    <ul class="space-y-8">
-                        <li class="flex items-start gap-5">
-                            <span class="text-green-500 text-xl mt-1"><i class="fa-solid fa-check"></i></span>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2 text-white">Дохід 100 000+ грн</h3>
-                                <p class="text-sm text-gray-400 font-light leading-relaxed">Вийшла на новий рівень доходу відразу після навчання. Запис на 2 місяці вперед.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-5">
-                            <span class="text-green-500 text-xl mt-1"><i class="fa-solid fa-check"></i></span>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2 text-white">Ріст блогу х2</h3>
-                                <p class="text-sm text-gray-400 font-light leading-relaxed">Приріст +400 цільових підписників під час навчання без вкладень у рекламу.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-5">
-                            <span class="text-green-500 text-xl mt-1"><i class="fa-solid fa-check"></i></span>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2 text-white">Свобода та кайф</h3>
-                                <p class="text-sm text-gray-400 font-light leading-relaxed">Поїхала у відпустку вперше за 1.5 роки. Повернула енергію та бажання творити.</p>
-                            </div>
-                        </li>
-                    </ul>
+                <!-- Bonus 2 -->
+                <div class="glass-card p-8 rounded-none border-l-4 border-l-evo-red hover:bg-white/5 transition-all">
+                    <div class="text-4xl text-gray-600 font-bold mb-4 opacity-30">02</div>
+                    <h3 class="text-xl font-bold mb-2">Схема контентної воронки</h3>
+                    <p class="text-gray-400 text-sm">Яка принесла 7 000$ на охопленнях 200.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CASE STUDIES -->
-    <section class="py-24 relative overflow-hidden">
-        <!-- Decoration Line -->
-        <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-evo-red/40 to-transparent"></div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-6xl font-thin uppercase mb-4 tracking-tighter">Кейси <span class="font-bold text-white">учнів</span></h2>
-                <p class="text-evo-red text-sm tracking-[0.3em] uppercase font-bold">Real Results</p>
-            </div>
+    <!-- 3. IS THIS FOR YOU -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-light uppercase text-center mb-12">Вам точно на <span class="font-bold">цей інтенсив, якщо:</span></h2>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Case 1 -->
-                <div class="group relative overflow-hidden glass-card rounded-none border border-white/5 hover:border-evo-red/40 transition-all duration-500 cursor-pointer">
-                    <img src="case_1.jpg" alt="Богдана" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 filter saturate-50 group-hover:saturate-100">
-                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform">
-                        <p class="text-white font-bold text-lg uppercase tracking-wider">Богдана</p>
-                        <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Б'юті-майстер • 150 000 грн</p>
-                    </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass-card p-6 flex flex-col gap-4">
+                    <div class="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center text-evo-red"><i class="fa-solid fa-xmark"></i></div>
+                    <p class="text-gray-300">Блог не приносить стабільних продажів, а контент хаотичний.</p>
                 </div>
-
-                <!-- Case 2 -->
-                <div class="group relative overflow-hidden glass-card rounded-none border border-white/5 hover:border-evo-red/40 transition-all duration-500 cursor-pointer">
-                    <img src="case_2.jpg" alt="Діана" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 filter saturate-50 group-hover:saturate-100">
-                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform">
-                        <p class="text-white font-bold text-lg uppercase tracking-wider">Діана</p>
-                        <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Сексолог • 4700$</p>
-                    </div>
+                <div class="glass-card p-6 flex flex-col gap-4">
+                    <div class="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center text-evo-red"><i class="fa-solid fa-xmark"></i></div>
+                    <p class="text-gray-300">Є продажі тільки коли ви працюєте 24/7. Немає чіткої системи.</p>
                 </div>
-
-                <!-- Case 3 -->
-                <div class="group relative overflow-hidden glass-card rounded-none border border-white/5 hover:border-evo-red/40 transition-all duration-500 cursor-pointer">
-                    <img src="case_3.jpg" alt="Крістіна" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 filter saturate-50 group-hover:saturate-100">
-                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform">
-                        <p class="text-white font-bold text-lg uppercase tracking-wider">Крістіна</p>
-                        <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Нутриціолог • 80 000+ грн</p>
-                    </div>
+                <div class="glass-card p-6 flex flex-col gap-4">
+                    <div class="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center text-evo-red"><i class="fa-solid fa-xmark"></i></div>
+                    <p class="text-gray-300">Весь блог тримається на вас і ви вигораєте від постійної рутини.</p>
                 </div>
-
-                <!-- Case 4 -->
-                <div class="group relative overflow-hidden glass-card rounded-none border border-white/5 hover:border-evo-red/40 transition-all duration-500 cursor-pointer">
-                    <img src="case_4.jpg" alt="Маша" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 filter saturate-50 group-hover:saturate-100">
-                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform">
-                        <p class="text-white font-bold text-lg uppercase tracking-wider">Маша</p>
-                        <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">SMM • 100 000 грн</p>
-                    </div>
+                <div class="glass-card p-6 flex flex-col gap-4">
+                    <div class="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center text-evo-red"><i class="fa-solid fa-xmark"></i></div>
+                    <p class="text-gray-300">Робите круті продукти, але їх погано купують.</p>
                 </div>
-
-                <!-- Case 5 (Wide) -->
-                <div class="md:col-span-2 group relative overflow-hidden glass-card rounded-none border border-white/5 hover:border-evo-red/40 transition-all duration-500 cursor-pointer max-w-4xl mx-auto w-full">
-                    <img src="case_5.jpg" alt="Таня" class="w-full h-auto opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 filter saturate-50 group-hover:saturate-100">
-                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform">
-                        <p class="text-white font-bold text-lg uppercase tracking-wider">Таня</p>
-                        <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">SMM • 36 000 грн за 3 тижні</p>
-                    </div>
+                <div class="glass-card p-6 flex flex-col gap-4">
+                    <div class="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center text-evo-red"><i class="fa-solid fa-xmark"></i></div>
+                    <p class="text-gray-300">Зливаєте гроші на рекламу без результату.</p>
+                </div>
+                 <div class="glass-card p-6 flex flex-col gap-4 justify-center items-center border border-evo-red/30 bg-evo-red/5">
+                    <p class="text-center font-bold text-white uppercase tracking-widest">Впізнаєш себе?</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER HERO & FORM -->
-    <section id="form" class="relative py-32 bg-evo-dark overflow-hidden">
-        <!-- Background Image blended -->
-        <div class="absolute inset-0 z-0 opacity-25">
-            <img src="footer_hero.jpg" alt="Background" class="w-full h-full object-cover grayscale">
-            <!-- Stronger gradient to fade photo into black -->
-            <div class="absolute inset-0 bg-gradient-to-t from-evo-dark via-evo-dark/90 to-transparent"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-evo-dark via-transparent to-transparent"></div>
-        </div>
-
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-2xl mx-auto text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-thin uppercase mb-6 tracking-tight">Стань частиною <br><span class="font-bold text-evo-red drop-shadow-[0_0_15px_rgba(217,48,37,0.5)]">EVOLUTION</span></h2>
-                <p class="text-gray-400 font-light text-base md:text-lg">Залиш заявку на інтенсив. Це твій перший крок до системних продажів.</p>
+    <!-- 4. WHAT AWAITS YOU -->
+    <section class="py-20 bg-evo-card">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl text-center font-bold mb-12">Що на вас чекає?</h2>
+            <div class="flex flex-wrap justify-center gap-8 text-center">
+                <div class="w-full md:w-1/3 p-4">
+                    <i class="fa-solid fa-video text-4xl text-evo-red mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">2 ефіри з розбором</h3>
+                    <p class="text-gray-400 text-sm">Ваших реальних ситуацій та кейсів.</p>
+                </div>
+                <div class="w-full md:w-1/3 p-4">
+                    <i class="fa-solid fa-screwdriver-wrench text-4xl text-evo-red mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Практичні інструменти</h3>
+                    <p class="text-gray-400 text-sm">Для автоматизації продажів.</p>
+                </div>
+                <div class="w-full md:w-1/3 p-4">
+                    <i class="fa-solid fa-road text-4xl text-evo-red mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Покрокові схеми</h3>
+                    <p class="text-gray-400 text-sm">Як блог приносить гроші та клієнтів.</p>
+                </div>
+                <div class="w-full md:w-1/3 p-4">
+                    <i class="fa-solid fa-bullseye text-4xl text-evo-red mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Фішки для малих охоплень</h3>
+                    <p class="text-gray-400 text-sm">Конкретні перевірені методи.</p>
+                </div>
+                <div class="w-full md:w-1/3 p-4">
+                    <i class="fa-solid fa-users text-4xl text-evo-red mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Комʼюніті</h3>
+                    <p class="text-gray-400 text-sm">Однодумці та підтримка.</p>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="max-w-md mx-auto">
-                <form name="submit-to-google-sheet" class="space-y-6">
-                    <div class="group">
-                        <input type="text" name="name" required class="w-full bg-black/40 backdrop-blur-md border border-white/10 rounded-none px-6 py-5 text-white placeholder-gray-500 focus:outline-none focus:border-evo-red focus:bg-black/60 transition-all text-lg" placeholder="Твоє ім'я">
-                    </div>
-                    <div class="group">
-                        <input type="tel" name="phone" required class="w-full bg-black/40 backdrop-blur-md border border-white/10 rounded-none px-6 py-5 text-white placeholder-gray-500 focus:outline-none focus:border-evo-red focus:bg-black/60 transition-all text-lg" placeholder="Номер телефону">
-                    </div>
-                    <div class="group">
-                        <input type="text" name="instagram" required class="w-full bg-black/40 backdrop-blur-md border border-white/10 rounded-none px-6 py-5 text-white placeholder-gray-500 focus:outline-none focus:border-evo-red focus:bg-black/60 transition-all text-lg" placeholder="@instagram">
-                    </div>
-                    
-                    <button type="submit" class="w-full bg-white text-black font-extrabold uppercase tracking-[0.2em] py-5 hover:bg-evo-red hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl">
-                        Відправити заявку
-                    </button>
-                    
-                    <div id="formMessage" class="hidden text-center text-sm text-green-400 mt-4 font-mono">
-                        [ ЗАЯВКУ УСПІШНО НАДІСЛАНО ]
-                    </div>
-                </form>
+    <!-- 5. POINT A - B (TRANSFORMATION) -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-4xl font-light uppercase">Це твій момент, щоб прибрати хаос</h2>
+                <p class="text-gray-500 mt-2">Чітко, без перевантаження.</p>
             </div>
             
-            <div class="text-center mt-20 border-t border-white/5 pt-8">
-                <p class="text-gray-600 text-[10px] uppercase tracking-[0.3em]">
-                    © 2025 Vladyslava Tsarenko. Evolution. All rights reserved.
+            <div class="max-w-4xl mx-auto mb-10">
+                <img src="a_to_b.JPG" alt="Transformation A to B" class="w-full rounded-xl shadow-2xl border border-white/10">
+            </div>
+
+            <div class="text-center max-w-2xl mx-auto">
+                <p class="text-lg md:text-xl text-white font-medium leading-relaxed">
+                    Клієнти починають купувати твій продукт <span class="text-evo-red font-bold">регулярно</span> — за реально працюючою схемою, а не випадково. 
+                    <br><br>
+                    На інтенсиві я покажу, як запустити цю систему у себе.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- LOGIC -->
-    <script>
-        // Анимации при скролле
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationName = 'fadeIn';
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            el.style.animationPlayState = 'paused';
-            observer.observe(el);
-        });
-
-        // Отправка формы (Google Scripts)
-        const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+    <!-- 6. PROGRAM -->
+    <section class="py-20 bg-evo-card relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[300px] h-[300px] bg-blue-900/10 rounded-full blur-[100px]"></div>
         
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl text-center font-bold uppercase mb-16">Програма <span class="text-white/50">інтенсиву</span></h2>
+
+            <div class="space-y-12 max-w-4xl mx-auto">
+                <!-- Day 1 -->
+                <div class="glass-card p-8 md:p-10 border-t-4 border-t-white">
+                    <div class="inline-block bg-white text-black font-bold px-4 py-1 text-sm uppercase tracking-widest mb-6">День 1</div>
+                    <h3 class="text-2xl font-bold mb-6 text-white">Як зробити блог стабільним джерелом продажів</h3>
+                    <ul class="space-y-4 text-gray-400 mb-8">
+                        <li class="flex items-start gap-3"><span class="text-evo-red">•</span> Розбір двох учасників інтенсиву в ефірі</li>
+                        <li class="flex items-start gap-3"><span class="text-evo-red">•</span> Зрозумієте, де зараз зупинився ваш бізнес і що гальмує продажі</li>
+                        <li class="flex items-start gap-3"><span class="text-evo-red">•</span> Як будувати регулярні продажі без хаосу і стресу</li>
+                        <li class="flex items-start gap-3"><span class="text-evo-red">•</span> Дізнаєтесь, як запускати продукти без величезних зусиль</li>
+                    </ul>
+                    <div class="bg-white/5 p-4 rounded-lg border-l-2 border-green-500">
+                        <p class="text-sm text-gray-300"><strong class="text-white">Результат дня:</strong> Я бачу, що зупиняє продажі і знаю, які кроки зробити, щоб почати стабільно отримувати клієнтів.</p>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="glass-card p-8 md:p-10 border-t-4 border-t-evo-red">
+                    <div class="inline-block bg-evo-red text-white font-bold px-4 py-1 text-sm uppercase tracking-widest mb-6">День 2</div>
+                    <h3 class="text-2xl font-bold mb-6 text-white">Яка модель дає ріст у 2026</h3>
+                    <ul class="space-y-4 text-gray-400 mb-8">
+                        <li class="flex items-start gap-3"><span class="text-evo-red">•</span> Яку бізнес-модель варто будувати зараз</li>
+                        <li class="flex items-start gap-3"><span class="text-evo-red">•</span> Розбір мого кейсу: як я вийшла з мінус 200к і побудувала працюючу модель</li>
+                        <li class="flex items-start gap-3"><span class="text-evo-red">•</span> Чому відмазки типу “алгоритми не працюють” — не правда</li>
+                        <li class="flex items-start gap-3"><span class="text-evo-red">•</span> Жорсткі та м’які інструменти для клієнтів і грошей</li>
+                        <li class="flex items-start gap-3"><span class="text-evo-red">•</span> Чому система = спокій + гроші + масштаб</li>
+                        <li class="flex items-start gap-3"><span class="text-evo-red">•</span> Розбір двох учасників інтенсиву в ефірі</li>
+                    </ul>
+                    <div class="bg-white/5 p-4 rounded-lg border-l-2 border-green-500">
+                        <p class="text-sm text-gray-300"><strong class="text-white">👉 Результат дня:</strong> «Я розумію, куди мені йти і що міняти»</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#form" class="inline-block bg-white text-black hover:bg-gray-200 font-bold py-4 px-12 text-lg uppercase tracking-widest transition-all">
+                    Зайняти місце
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. RESULTS (CASES) -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl text-center font-bold uppercase mb-12">Результати <span class="text-evo-red">учнів</span></h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Case Images from files -->
+                <img src="case_1.jpg" alt="Case 1" class="w-full h-auto rounded-lg opacity-80 hover:opacity-100 transition duration-500">
+                <img src="case_2.jpg" alt="Case 2" class="w-full h-auto rounded-lg opacity-80 hover:opacity-100 transition duration-500">
+                <img src="case_3.jpg" alt="Case 3" class="w-full h-auto rounded-lg opacity-80 hover:opacity-100 transition duration-500">
+                <img src="case_4.jpg" alt="Case 4" class="w-full h-auto rounded-lg opacity-80 hover:opacity-100 transition duration-500">
+                <div class="md:col-span-2 lg:col-span-2">
+                    <img src="case_5.jpg" alt="Case 5" class="w-full h-auto rounded-lg opacity-80 hover:opacity-100 transition duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. MOTIVATION -->
+    <section class="py-20 bg-gradient-to-b from-black to-evo-card text-center">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Що як цей 2026 рік стане вашим найприбутковішим?</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                <span class="text-evo-red font-bold text-3xl">$10 000+</span> і більше — це реальні цифри, якщо блог працює як система, а не хаотично.
+            </p>
+            <p class="text-gray-400 mb-10">
+                Ви можете робити нескінченні проби, чекати невідомо коли результату… або зробити перший крок прям зараз.
+            </p>
+            <a href="#form" class="inline-block border border-white text-white hover:bg-white hover:text-black font-bold py-3 px-8 uppercase tracking-widest transition-all">
+                Зробити перший крок
+            </a>
+        </div>
+    </section>
+
+    <!-- 9. FAQ -->
+    <section class="py-20 bg-evo-dark">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-3xl text-center font-bold uppercase mb-12">Запитання та <span class="text-gray-500">відповіді</span></h2>
+            
+            <div class="space-y-4">
+                <details class="glass-card rounded-lg group">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-lg">
+                        <span>Чи справді це працює для тих, у кого невелика аудиторія?</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-evo-red"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400">
+                        Так! Навіть на маленьких охопленнях можна отримувати $5 000+ і більше, якщо застосовувати систему правильно.
+                    </div>
+                </details>
+
+                <details class="glass-card rounded-lg group">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-lg">
+                        <span>Чи підійде мені це, якщо у мене вже є продукт або досвід запусків?</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-evo-red"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400">
+                        Так! Ми ділимось актуальними інструментами, які реально приносять гроші і масштабують бізнес.
+                    </div>
+                </details>
+
+                <details class="glass-card rounded-lg group">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-lg">
+                        <span>Чи працює система з різними тематиками блогів?</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-evo-red"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400">
+                        Так! Методика універсальна і підходить для будь-якої ніші, де є продукт або послуга.
+                    </div>
+                </details>
+
+                <details class="glass-card rounded-lg group">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-lg">
+                        <span>А якщо я боюся, що не впораюся з усіма інструментами?</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-evo-red"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400">
+                        Не хвилюйтесь! Ми розберемо кожен крок практично, щоб ви змогли повторити систему самостійно.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. REGISTRATION FORM (ANCHOR) -->
+    <section id="form" class="py-24 bg-black relative">
+        <div class="absolute inset-0 opacity-20 bg-[url('footer_hero.jpg')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-xl mx-auto glass-card p-8 md:p-12 rounded-2xl border border-evo-red/30 shadow-[0_0_50px_rgba(217,48,37,0.15)]">
+                <h2 class="text-3xl font-bold text-center mb-2 uppercase">Зареєструватись</h2>
+                <p class="text-center text-gray-400 mb-8 text-sm">Вкажіть свої дані, щоб отримати доступ до інтенсиву та бонуси.</p>
+
+                <form name="submit-to-google-sheet" class="space-y-4">
+                    <input type="text" name="name" required class="w-full bg-black/50 border border-white/20 p-4 text-white focus:border-evo-red focus:outline-none transition-colors" placeholder="Ім'я">
+                    <input type="tel" name="phone" required class="w-full bg-black/50 border border-white/20 p-4 text-white focus:border-evo-red focus:outline-none transition-colors" placeholder="Телефон">
+                    <input type="text" name="instagram" required class="w-full bg-black/50 border border-white/20 p-4 text-white focus:border-evo-red focus:outline-none transition-colors" placeholder="@Нікнейм">
+                    
+                    <button type="submit" class="w-full bg-evo-red hover:bg-red-700 text-white font-bold py-4 uppercase tracking-widest transition-all mt-4">
+                        Приєднатись безкоштовно
+                    </button>
+                    
+                    <div id="formMessage" class="hidden text-center text-green-400 mt-2 text-sm">
+                        Ви успішно зареєстровані!
+                    </div>
+                </form>
+            </div>
+            
+            <footer class="text-center text-gray-600 text-xs mt-12 uppercase tracking-widest">
+                Evolution 2025. Всі права захищено.
+            </footer>
+        </div>
+    </section>
+
+    <!-- FLOATING CTA (MOBILE ONLY) -->
+    <div class="fixed bottom-6 left-6 right-6 z-50 md:hidden">
+        <a href="#form" class="block w-full bg-evo-red text-white text-center font-bold py-4 rounded-full shadow-2xl uppercase tracking-widest text-sm animate-bounce hover:animate-none">
+            Приєднатись безкоштовно
+        </a>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Google Sheet Integration
+        const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; // <--- Вставь ссылку
         const form = document.forms['submit-to-google-sheet'];
         const msg = document.getElementById('formMessage');
 
         form.addEventListener('submit', e => {
             e.preventDefault();
             const btn = form.querySelector('button');
-            const originalText = btn.innerText;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
             
-            btn.innerText = 'ВІДПРАВКА...';
-            btn.classList.add('opacity-70', 'cursor-not-allowed');
-            btn.disabled = true;
-
-            // Если URL не задан (демо режим)
             if(scriptURL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+                // Demo mode
                 setTimeout(() => {
                     btn.hidden = true;
                     msg.classList.remove('hidden');
@@ -373,12 +453,7 @@
                         form.reset();
                         if(typeof fbq !== 'undefined') fbq('track', 'Lead');
                     })
-                    .catch(error => {
-                        console.error('Error!', error.message);
-                        btn.innerText = 'ПОМИЛКА';
-                        btn.disabled = false;
-                        btn.classList.remove('opacity-70', 'cursor-not-allowed');
-                    });
+                    .catch(error => console.error('Error!', error.message));
             }
         });
     </script>
