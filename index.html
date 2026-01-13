@@ -53,7 +53,6 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* FAQ Accordion Styles */
         details > summary {
             list-style: none;
         }
@@ -95,14 +94,15 @@
             <div class="flex flex-col md:flex-row items-end gap-8">
                 <!-- Text Content -->
                 <div class="md:w-3/5 pb-12 md:pb-24 z-20">
-                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">
-                        ЗРОБИЛА ПРОДАЖІВ ЧЕРЕЗ БЛОГ НА <span class="text-evo-red">7 000 000+ ГРН</span>
+                    <!-- ИСПРАВЛЕНИЕ ЗДЕСЬ: whitespace-nowrap -->
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                        ЗРОБИЛА ПРОДАЖІВ ЧЕРЕЗ БЛОГ НА <br class="md:hidden"> <span class="text-evo-red whitespace-nowrap">7 000 000+ ГРН</span>
                     </h1>
-                    <p class="text-xl md:text-2xl text-gray-300 font-light mb-8">
+                    <p class="text-lg md:text-2xl text-gray-300 font-light mb-8">
                         З хаосу — в систему, яка стабільно приносить продажі з блогу
                     </p>
 
-                    <ul class="space-y-3 mb-10 text-gray-400 font-medium">
+                    <ul class="space-y-3 mb-10 text-gray-400 font-medium text-sm md:text-base">
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-check text-evo-red"></i> Від $5 000 до $50 000 на місяць
                         </li>
@@ -152,13 +152,11 @@
             <h2 class="text-3xl md:text-4xl font-light uppercase text-center mb-12">Бонуси для <span class="font-bold text-evo-red">всіх учасників</span></h2>
             
             <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <!-- Bonus 1 -->
                 <div class="glass-card p-8 rounded-none border-l-4 border-l-evo-red hover:bg-white/5 transition-all">
                     <div class="text-4xl text-gray-600 font-bold mb-4 opacity-30">01</div>
                     <h3 class="text-xl font-bold mb-2">Планер цілей 2026</h3>
                     <p class="text-gray-400 text-sm">Який не дасть проїбати твої амбітні цілі на 2026 рік.</p>
                 </div>
-                <!-- Bonus 2 -->
                 <div class="glass-card p-8 rounded-none border-l-4 border-l-evo-red hover:bg-white/5 transition-all">
                     <div class="text-4xl text-gray-600 font-bold mb-4 opacity-30">02</div>
                     <h3 class="text-xl font-bold mb-2">Схема контентної воронки</h3>
@@ -430,7 +428,7 @@
     <!-- SCRIPTS -->
     <script>
         // Google Sheet Integration
-        const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; // <--- Вставь ссылку
+        const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
         const form = document.forms['submit-to-google-sheet'];
         const msg = document.getElementById('formMessage');
 
@@ -440,7 +438,6 @@
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
             
             if(scriptURL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
-                // Demo mode
                 setTimeout(() => {
                     btn.hidden = true;
                     msg.classList.remove('hidden');
