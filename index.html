@@ -10,7 +10,7 @@
     
     <!-- FONTS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- CONFIG -->
     <script>
@@ -239,7 +239,7 @@
         </div>
     </section>
 
-    <!-- 5. POINT A - B (TRANSFORMATION) FIXED ORDER -->
+    <!-- 5. POINT A - B (TRANSFORMATION) FIXED ORDER + TITLES -->
     <section class="py-24 bg-black relative overflow-hidden">
         <!-- Decoration background -->
         <div class="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0a] to-black"></div>
@@ -252,21 +252,13 @@
             </div>
 
             <div class="relative max-w-6xl mx-auto">
-                <!-- 
-                   Порядок на МОБИЛКЕ (flex-col):
-                   1. POINT A
-                   2. EXPERT
-                   3. POINT B
-                   
-                   Порядок на ДЕСКТОПЕ (grid-cols-3):
-                   1. POINT A (Left)
-                   2. EXPERT (Center)
-                   3. POINT B (Right)
-                -->
                 <div class="flex flex-col md:grid md:grid-cols-3 items-center gap-12 md:gap-8">
                     
                     <!-- 1. POINT A -->
                     <div class="order-1 flex flex-col items-center md:items-end md:pr-4 relative group w-full">
+                        <!-- BIG TITLE POINT A -->
+                        <h3 class="text-4xl md:text-5xl font-black text-gray-700 uppercase mb-4 md:mb-6 tracking-tighter">ТОЧКА А</h3>
+                        
                         <div onclick="openLightbox('point_a.jpg')" class="relative w-full max-w-xs rounded-2xl overflow-hidden border border-white/10 shadow-2xl cursor-pointer">
                             <img src="point_a.jpg" alt="Марія До" class="w-full h-auto object-cover">
                             <div class="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-bold text-gray-300 border-l-2 border-red-500 uppercase">До: Хаос</div>
@@ -287,6 +279,9 @@
 
                     <!-- 3. POINT B -->
                     <div class="order-3 flex flex-col items-center md:items-start md:pl-4 relative group w-full">
+                        <!-- BIG TITLE POINT B -->
+                        <h3 class="text-4xl md:text-5xl font-black text-evo-red uppercase mb-4 md:mb-6 tracking-tighter">ТОЧКА Б</h3>
+
                         <div onclick="openLightbox('point_b.jpg')" class="relative w-full max-w-xs rounded-2xl overflow-hidden border-2 border-evo-red/50 shadow-[0_0_30px_rgba(217,48,37,0.15)] cursor-pointer">
                             <img src="point_b.jpg" alt="Марія Після" class="w-full h-auto object-cover">
                             <div class="absolute bottom-4 left-4 bg-white text-black px-3 py-1 text-xs font-bold border-l-2 border-evo-red uppercase">Після: Масштаб</div>
@@ -495,33 +490,29 @@
 
     <!-- SCRIPTS -->
     <script>
-        // --- EVERGREEN TIMER LOGIC ---
+        // --- RANDOM TIMER LOGIC (10-15 min) ---
         function startTimer(display) {
-            function updateTimer() {
-                const now = new Date();
-                const target = new Date();
+            // Генерируем случайное время от 10 до 15 минут (в секундах)
+            // 10 мин = 600 сек, 15 мин = 900 сек
+            // Формула: Math.floor(Math.random() * (max - min + 1) + min)
+            let duration = Math.floor(Math.random() * (900 - 600 + 1) + 600);
+            
+            let timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = Math.floor(timer / 60);
+                seconds = timer % 60;
+
+                // Дни и часы всегда 00
+                document.getElementById('days').textContent = "00";
+                document.getElementById('hours').textContent = "00";
                 
-                // Цель: Завтра в 06:00:00
-                target.setDate(now.getDate() + 1);
-                target.setHours(6, 0, 0, 0);
-
-                // Разница в миллисекундах
-                const diff = target - now;
-
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                document.getElementById('days').textContent = days < 10 ? "0" + days : days;
-                document.getElementById('hours').textContent = hours < 10 ? "0" + hours : hours;
                 document.getElementById('minutes').textContent = minutes < 10 ? "0" + minutes : minutes;
                 document.getElementById('seconds').textContent = seconds < 10 ? "0" + seconds : seconds;
-            }
 
-            // Обновляем каждую секунду
-            updateTimer();
-            setInterval(updateTimer, 1000);
+                if (--timer < 0) {
+                    timer = 0; // Останавливаем на 00:00
+                }
+            }, 1000);
         }
 
         window.onload = function () {
