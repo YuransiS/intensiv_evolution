@@ -63,6 +63,11 @@
         .hero-gradient {
             background: linear-gradient(to top, #050505 5%, transparent 100%);
         }
+        
+        /* Агрессивный градиент для мобилки */
+        .mobile-hero-fade {
+            background: linear-gradient(to top, #050505 40%, rgba(5,5,5,0.9) 75%, transparent 100%);
+        }
 
         /* Modal & Lightbox Animation */
         .modal-enter { opacity: 0; transform: scale(0.95); }
@@ -84,89 +89,111 @@
     </nav>
 
     <!-- 1. HERO BLOCK -->
-    <section class="relative min-h-screen pt-28 flex flex-col justify-end overflow-hidden">
+    <section class="relative min-h-screen pt-20 md:pt-28 flex flex-col justify-end overflow-hidden">
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-evo-red/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <!-- Top Tag -->
-            <div class="flex justify-center md:justify-start mb-8">
+            <!-- Top Tag (Desktop Only) -->
+            <div class="hidden md:flex justify-start mb-8">
                 <div class="inline-flex items-center gap-2 px-4 py-2 border border-evo-red/50 rounded-full bg-evo-red/10">
                     <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
                     <span class="text-xs uppercase tracking-widest font-bold text-white">Безкоштовний інтенсив</span>
-                    <span class="text-xs text-gray-400 border-l border-gray-600 pl-2 ml-1">СКОРО</span>
                 </div>
             </div>
 
-            <div class="flex flex-col md:flex-row items-end gap-8">
-                <!-- Text Content -->
-                <div class="md:w-3/5 pb-12 md:pb-24 z-20">
-                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-                        ЗРОБИЛА ПРОДАЖІВ ЧЕРЕЗ БЛОГ НА <br class="md:hidden"> <span class="text-evo-red whitespace-nowrap">7 000 000+ ГРН</span>
-                    </h1>
-                    <p class="text-lg md:text-2xl text-gray-300 font-light mb-8">
-                        З хаосу — в систему, яка стабільно приносить продажі з блогу
-                    </p>
-
-                    <ul class="space-y-3 mb-10 text-gray-400 font-medium text-sm md:text-base">
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-evo-red"></i> Від $5 000 до $50 000 на місяць
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-evo-red"></i> Без впарювання
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-evo-red"></i> Без складних схем
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-evo-red"></i> Працює навіть з малими охопленнями
-                        </li>
-                    </ul>
-
-                    <!-- Offer Box -->
-                    <div class="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm max-w-md">
-                        <div class="flex items-center gap-4 mb-4">
-                            <span class="text-gray-500 line-through text-lg">2900 грн</span>
-                            <span class="text-evo-red font-bold text-2xl uppercase">БЕЗКОШТОВНО</span>
-                        </div>
-                        
-                        <!-- Timer -->
-                        <div class="flex gap-4 mb-6 text-center text-xs uppercase tracking-widest text-gray-500" id="countdown">
-                            <div><div class="text-2xl text-white font-bold font-mono bg-black/30 rounded p-2" id="days">00</div>Днів</div>
-                            <div><div class="text-2xl text-white font-bold font-mono bg-black/30 rounded p-2" id="hours">00</div>Год</div>
-                            <div><div class="text-2xl text-white font-bold font-mono bg-black/30 rounded p-2" id="minutes">00</div>Хв</div>
-                            <div><div class="text-2xl text-white font-bold font-mono bg-black/30 rounded p-2" id="seconds">00</div>Сек</div>
-                        </div>
-
-                        <button onclick="toggleModal(true)" class="block w-full text-center bg-evo-red hover:bg-red-700 text-white font-bold py-4 text-lg uppercase tracking-widest transition-all shadow-[0_0_20px_rgba(217,48,37,0.4)] rounded-lg">
-                            Приєднатись
-                        </button>
+            <div class="flex flex-col md:flex-row items-end gap-0 md:gap-8">
+                
+                <!-- MOBILE TAG -->
+                <div class="md:hidden w-full flex justify-center mb-2 order-0 relative z-30">
+                     <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-evo-red/50 rounded-full bg-black/60 backdrop-blur-md">
+                        <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-white">Безкоштовний інтенсив</span>
                     </div>
                 </div>
 
                 <!-- Hero Image -->
-                <div class="md:w-2/5 relative w-full flex justify-center items-end mt-[-50px] md:mt-0 z-10">
-                    <img src="hero_cutout.png" alt="Vladyslava Tsarenko" class="w-auto max-h-[50vh] md:max-h-[85vh] object-contain drop-shadow-2xl">
-                    <div class="absolute bottom-0 w-full h-32 hero-gradient"></div>
+                <div class="order-1 md:order-2 md:w-2/5 relative w-full flex justify-center items-end z-10">
+                    <div class="relative w-full flex justify-center overflow-hidden md:overflow-visible">
+                        <img src="hero_cutout.png" alt="Vladyslava Tsarenko" class="w-auto min-w-[160%] -ml-[30%] md:min-w-0 md:ml-0 max-h-[60vh] md:max-h-[85vh] object-contain drop-shadow-2xl">
+                        
+                        <div class="absolute bottom-0 w-full h-[350px] mobile-hero-fade md:hidden"></div>
+                        <div class="absolute bottom-0 w-full h-32 hero-gradient hidden md:block"></div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="order-2 md:order-1 md:w-3/5 pb-12 md:pb-24 z-20 -mt-80 md:mt-0 relative pointer-events-none md:pointer-events-auto">
+                    <div class="pointer-events-auto">
+                        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 text-center md:text-left drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] relative z-20">
+                            ЗРОБИЛА ПРОДАЖІВ ЧЕРЕЗ БЛОГ НА <br class="md:hidden"> <span class="text-evo-red whitespace-nowrap">7 000 000+ ГРН</span>
+                        </h1>
+                        <p class="text-lg md:text-2xl text-gray-300 font-light mb-8 text-center md:text-left drop-shadow-md">
+                            З хаосу — в систему, яка стабільно приносить продажі з блогу
+                        </p>
+
+                        <ul class="space-y-3 mb-10 text-gray-400 font-medium text-sm md:text-base bg-black/60 md:bg-transparent backdrop-blur-md md:backdrop-blur-none p-6 rounded-2xl md:p-0 border border-white/10 md:border-none shadow-2xl">
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-evo-red"></i> Від $5 000 до $50 000 на місяць
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-evo-red"></i> Без впарювання
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-evo-red"></i> Без складних схем
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-evo-red"></i> Працює навіть з малими охопленнями
+                            </li>
+                        </ul>
+
+                        <!-- Offer Box -->
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm max-w-md mx-auto md:mx-0">
+                            <div class="flex items-center justify-center md:justify-start gap-4 mb-4">
+                                <span class="text-gray-500 line-through text-lg">2900 грн</span>
+                                <span class="text-evo-red font-bold text-2xl uppercase">БЕЗКОШТОВНО</span>
+                            </div>
+                            
+                            <!-- Timer -->
+                            <div class="flex justify-center md:justify-start gap-4 mb-6 text-center text-xs uppercase tracking-widest text-gray-500" id="countdown">
+                                <div><div class="text-2xl text-white font-bold font-mono bg-black/30 rounded p-2" id="days">00</div>Днів</div>
+                                <div><div class="text-2xl text-white font-bold font-mono bg-black/30 rounded p-2" id="hours">00</div>Год</div>
+                                <div><div class="text-2xl text-white font-bold font-mono bg-black/30 rounded p-2" id="minutes">00</div>Хв</div>
+                                <div><div class="text-2xl text-white font-bold font-mono bg-black/30 rounded p-2" id="seconds">00</div>Сек</div>
+                            </div>
+
+                            <button onclick="toggleModal(true)" class="block w-full text-center bg-evo-red hover:bg-red-700 text-white font-bold py-4 text-lg uppercase tracking-widest transition-all shadow-[0_0_20px_rgba(217,48,37,0.4)] rounded-lg">
+                                Приєднатись
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. BONUSES -->
+    <!-- 2. BONUSES (FIXED IMAGE FIT) -->
     <section class="py-20 bg-evo-card border-t border-white/5">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-light uppercase text-center mb-12">Бонуси для <span class="font-bold text-evo-red">всіх учасників</span></h2>
             
-            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <div class="glass-card p-8 rounded-none border-l-4 border-l-evo-red hover:bg-white/5 transition-all">
-                    <div class="text-4xl text-gray-600 font-bold mb-4 opacity-30">01</div>
-                    <h3 class="text-xl font-bold mb-2">Планер цілей 2026</h3>
-                    <p class="text-gray-400 text-sm">Який не дасть проїбати твої амбітні цілі на 2026 рік.</p>
+            <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <!-- Bonus 1 -->
+                <div class="glass-card p-6 rounded-none border-l-4 border-l-evo-red hover:bg-white/5 transition-all flex flex-col sm:flex-row items-center gap-6">
+                    <!-- Changed object-cover to object-contain -->
+                    <img src="bonus_1.jpg" alt="Планер" class="w-56 h-40 md:w-64 md:h-48 bg-black object-contain rounded-lg shadow-2xl border border-white/10 shrink-0">
+                    <div class="text-center sm:text-left">
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 leading-tight">Планер цілей 2026</h3>
+                        <p class="text-gray-400 text-sm md:text-base">Який не дасть про*бати твої амбітні цілі на 2026 рік.</p>
+                    </div>
                 </div>
-                <div class="glass-card p-8 rounded-none border-l-4 border-l-evo-red hover:bg-white/5 transition-all">
-                    <div class="text-4xl text-gray-600 font-bold mb-4 opacity-30">02</div>
-                    <h3 class="text-xl font-bold mb-2">Схема контентної воронки</h3>
-                    <p class="text-gray-400 text-sm">Яка принесла 7 000$ на охопленнях 200.</p>
+                <!-- Bonus 2 -->
+                <div class="glass-card p-6 rounded-none border-l-4 border-l-evo-red hover:bg-white/5 transition-all flex flex-col sm:flex-row items-center gap-6">
+                    <!-- Changed object-cover to object-contain -->
+                    <img src="bonus_2.jpg" alt="Схема" class="w-56 h-40 md:w-64 md:h-48 bg-black object-contain rounded-lg shadow-2xl border border-white/10 shrink-0">
+                    <div class="text-center sm:text-left">
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 leading-tight">Схема контентної воронки</h3>
+                        <p class="text-gray-400 text-sm md:text-base">Яка принесла 7 000$ на охопленнях 200.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -180,26 +207,30 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="glass-card p-6 flex flex-col gap-4">
                     <div class="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center text-evo-red"><i class="fa-solid fa-xmark"></i></div>
-                    <p class="text-gray-300">Блог не приносить стабільних продажів, а контент хаотичний.</p>
+                    <p class="text-gray-300 font-medium">Блог не приносить стабільних продажів, а контент хаотичний.</p>
                 </div>
                 <div class="glass-card p-6 flex flex-col gap-4">
                     <div class="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center text-evo-red"><i class="fa-solid fa-xmark"></i></div>
-                    <p class="text-gray-300">Є продажі тільки коли ви працюєте 24/7. Немає чіткої системи.</p>
+                    <p class="text-gray-300 font-medium">Є продажі тільки коли ви працюєте 24/7.</p>
                 </div>
                 <div class="glass-card p-6 flex flex-col gap-4">
                     <div class="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center text-evo-red"><i class="fa-solid fa-xmark"></i></div>
-                    <p class="text-gray-300">Весь блог тримається на вас і ви вигораєте від постійної рутини.</p>
+                    <p class="text-gray-300 font-medium">Немає чіткої системи залучення заявок і клієнтів.</p>
                 </div>
                 <div class="glass-card p-6 flex flex-col gap-4">
                     <div class="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center text-evo-red"><i class="fa-solid fa-xmark"></i></div>
-                    <p class="text-gray-300">Робите круті продукти, але їх погано купують.</p>
+                    <p class="text-gray-300 font-medium text-sm">Ви багато робите дій в блозі, регулярно його ведете, але аудиторія слабо набирається, охоплення просідають, заявок мало, продажі стало важче робити.</p>
                 </div>
                 <div class="glass-card p-6 flex flex-col gap-4">
                     <div class="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center text-evo-red"><i class="fa-solid fa-xmark"></i></div>
-                    <p class="text-gray-300">Зливаєте гроші на рекламу без результату.</p>
+                    <p class="text-gray-300 font-medium">Робите круті продукти, але їх погано купують.</p>
                 </div>
-                 <div class="glass-card p-6 flex flex-col gap-4 justify-center items-center border border-evo-red/30 bg-evo-red/5">
-                    <p class="text-center font-bold text-white uppercase tracking-widest">Впізнаєш себе?</p>
+                <div class="glass-card p-6 flex flex-col gap-4">
+                    <div class="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center text-evo-red"><i class="fa-solid fa-xmark"></i></div>
+                    <p class="text-gray-300 font-medium">Зливаєте гроші на рекламу.</p>
+                </div>
+                 <div class="md:col-span-2 lg:col-span-3 glass-card p-6 flex flex-col justify-center items-center border border-evo-red/30 bg-evo-red/5 mt-4">
+                    <p class="text-center font-bold text-white uppercase tracking-widest text-xl">Впізнаєте себе?</p>
                 </div>
             </div>
         </div>
@@ -210,38 +241,49 @@
         <div class="container mx-auto px-6">
             <h2 class="text-3xl text-center font-bold mb-12">Що на вас чекає?</h2>
             <div class="flex flex-wrap justify-center gap-8 text-center">
-                <div class="w-full md:w-1/3 p-4">
-                    <i class="fa-solid fa-video text-4xl text-evo-red mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">2 ефіри з розбором</h3>
-                    <p class="text-gray-400 text-sm">Ваших реальних ситуацій та кейсів.</p>
+                
+                <div class="w-full md:w-1/3 p-4 flex flex-col items-center">
+                    <img src="zoom_call.jpg" alt="Ефіри" class="w-24 h-24 object-cover rounded-2xl mb-4 border border-evo-red/30 shadow-[0_0_20px_rgba(217,48,37,0.2)]">
+                    <h3 class="text-xl font-bold mb-2">2 живих ефіри</h3>
+                    <p class="text-gray-400 text-sm">З розбором ваших реальних ситуацій і моделей продажів.</p>
                 </div>
-                <div class="w-full md:w-1/3 p-4">
-                    <i class="fa-solid fa-screwdriver-wrench text-4xl text-evo-red mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Практичні інструменти</h3>
-                    <p class="text-gray-400 text-sm">Для автоматизації продажів.</p>
+                
+                <div class="w-full md:w-1/3 p-4 flex flex-col items-center">
+                    <img src="icon_analysis.jpg" alt="Аналіз" class="w-24 h-24 object-cover rounded-2xl mb-4 border border-evo-red/30 shadow-[0_0_20px_rgba(217,48,37,0.2)]">
+                    <h3 class="text-xl font-bold mb-2">Розбір ситуацій</h3>
+                    <p class="text-gray-400 text-sm">Глибокий аналіз вашого бізнесу та продажів.</p>
                 </div>
-                <div class="w-full md:w-1/3 p-4">
-                    <i class="fa-solid fa-road text-4xl text-evo-red mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Покрокові схеми</h3>
-                    <p class="text-gray-400 text-sm">Як блог приносить гроші та клієнтів.</p>
+
+                <div class="w-full md:w-1/3 p-4 flex flex-col items-center">
+                    <img src="icon_links.jpg" alt="Звʼязки" class="w-24 h-24 object-cover rounded-2xl mb-4 border border-evo-red/30 shadow-[0_0_20px_rgba(217,48,37,0.2)]">
+                    <h3 class="text-xl font-bold mb-2">Конкретні звʼязки</h3>
+                    <p class="text-gray-400 text-sm">Які працюють в продажах вже зараз.</p>
                 </div>
-                <div class="w-full md:w-1/3 p-4">
-                    <i class="fa-solid fa-bullseye text-4xl text-evo-red mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Фішки для малих охоплень</h3>
-                    <p class="text-gray-400 text-sm">Конкретні перевірені методи.</p>
+
+                <div class="w-full md:w-1/3 p-4 flex flex-col items-center">
+                    <img src="icon_steps.jpg" alt="Схема" class="w-24 h-24 object-cover rounded-2xl mb-4 border border-evo-red/30 shadow-[0_0_20px_rgba(217,48,37,0.2)]">
+                    <h3 class="text-xl font-bold mb-2">Покрокова схема</h3>
+                    <p class="text-gray-400 text-sm">Яка переводить вас з разових продажів у постійний потік клієнтів.</p>
                 </div>
-                <div class="w-full md:w-1/3 p-4">
-                    <i class="fa-solid fa-users text-4xl text-evo-red mb-4"></i>
+
+                <div class="w-full md:w-1/3 p-4 flex flex-col items-center">
+                    <img src="icon_crown.jpg" alt="Позиціонування" class="w-24 h-24 object-cover rounded-2xl mb-4 border border-evo-red/30 shadow-[0_0_20px_rgba(217,48,37,0.2)]">
+                    <h3 class="text-xl font-bold mb-2">Модель позиціонування</h3>
+                    <p class="text-gray-400 text-sm">Яка виводить експертів як авторитетів на ринку.</p>
+                </div>
+
+                <div class="w-full md:w-1/3 p-4 flex flex-col items-center">
+                    <img src="icon_community.jpg" alt="Комʼюніті" class="w-24 h-24 object-cover rounded-2xl mb-4 border border-evo-red/30 shadow-[0_0_20px_rgba(217,48,37,0.2)]">
                     <h3 class="text-xl font-bold mb-2">Комʼюніті</h3>
                     <p class="text-gray-400 text-sm">Однодумці та підтримка.</p>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- 5. POINT A - B (TRANSFORMATION) FIXED ORDER + TITLES -->
+    <!-- 5. POINT A - B (TRANSFORMATION) -->
     <section class="py-24 bg-black relative overflow-hidden">
-        <!-- Decoration background -->
         <div class="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0a] to-black"></div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-evo-red/5 blur-[120px] rounded-full"></div>
 
@@ -256,9 +298,7 @@
                     
                     <!-- 1. POINT A -->
                     <div class="order-1 flex flex-col items-center md:items-end md:pr-4 relative group w-full">
-                        <!-- BIG TITLE POINT A -->
                         <h3 class="text-4xl md:text-5xl font-black text-gray-700 uppercase mb-4 md:mb-6 tracking-tighter">ТОЧКА А</h3>
-                        
                         <div onclick="openLightbox('point_a.jpg')" class="relative w-full max-w-xs rounded-2xl overflow-hidden border border-white/10 shadow-2xl cursor-pointer">
                             <img src="point_a.jpg" alt="Марія До" class="w-full h-auto object-cover">
                             <div class="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-bold text-gray-300 border-l-2 border-red-500 uppercase">До: Хаос</div>
@@ -279,9 +319,7 @@
 
                     <!-- 3. POINT B -->
                     <div class="order-3 flex flex-col items-center md:items-start md:pl-4 relative group w-full">
-                        <!-- BIG TITLE POINT B -->
                         <h3 class="text-4xl md:text-5xl font-black text-evo-red uppercase mb-4 md:mb-6 tracking-tighter">ТОЧКА Б</h3>
-
                         <div onclick="openLightbox('point_b.jpg')" class="relative w-full max-w-xs rounded-2xl overflow-hidden border-2 border-evo-red/50 shadow-[0_0_30px_rgba(217,48,37,0.15)] cursor-pointer">
                             <img src="point_b.jpg" alt="Марія Після" class="w-full h-auto object-cover">
                             <div class="absolute bottom-4 left-4 bg-white text-black px-3 py-1 text-xs font-bold border-l-2 border-evo-red uppercase">Після: Масштаб</div>
@@ -296,8 +334,7 @@
             </div>
             
             <div class="text-center mt-20 max-w-2xl mx-auto">
-                <p class="text-lg text-gray-300">
-                    <span class="text-evo-red font-bold">Марія Шпаковська</span> пройшла шлях від вигорання до системного доходу. <br>
+                <p class="text-lg md:text-xl text-gray-300 font-medium">
                     На інтенсиві ми розберемо інструменти, які дозволили їй зробити цей ривок.
                 </p>
             </div>
@@ -492,26 +529,16 @@
     <script>
         // --- RANDOM TIMER LOGIC (10-15 min) ---
         function startTimer(display) {
-            // Генерируем случайное время от 10 до 15 минут (в секундах)
-            // 10 мин = 600 сек, 15 мин = 900 сек
-            // Формула: Math.floor(Math.random() * (max - min + 1) + min)
             let duration = Math.floor(Math.random() * (900 - 600 + 1) + 600);
-            
             let timer = duration, minutes, seconds;
             setInterval(function () {
                 minutes = Math.floor(timer / 60);
                 seconds = timer % 60;
-
-                // Дни и часы всегда 00
                 document.getElementById('days').textContent = "00";
                 document.getElementById('hours').textContent = "00";
-                
                 document.getElementById('minutes').textContent = minutes < 10 ? "0" + minutes : minutes;
                 document.getElementById('seconds').textContent = seconds < 10 ? "0" + seconds : seconds;
-
-                if (--timer < 0) {
-                    timer = 0; // Останавливаем на 00:00
-                }
+                if (--timer < 0) timer = 0;
             }, 1000);
         }
 
