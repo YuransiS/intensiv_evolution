@@ -64,9 +64,9 @@
             background: linear-gradient(to top, #050505 5%, transparent 100%);
         }
         
-        /* Агрессивный градиент для мобилки */
+        /* Градиент для мобилки */
         .mobile-hero-fade {
-            background: linear-gradient(to top, #050505 40%, rgba(5,5,5,0.9) 75%, transparent 100%);
+            background: linear-gradient(to top, #050505 30%, rgba(5,5,5,0.9) 70%, transparent 100%);
         }
 
         /* Modal & Lightbox Animation */
@@ -103,7 +103,7 @@
 
             <div class="flex flex-col md:flex-row items-end gap-0 md:gap-8">
                 
-                <!-- MOBILE TAG -->
+                <!-- MOBILE TAG (ORDER 0 - ABOVE VLADA) -->
                 <div class="md:hidden w-full flex justify-center mb-2 order-0 relative z-30">
                      <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-evo-red/50 rounded-full bg-black/60 backdrop-blur-md">
                         <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
@@ -111,18 +111,20 @@
                     </div>
                 </div>
 
-                <!-- Hero Image -->
+                <!-- Hero Image (ORDER 1 on Mobile) -->
                 <div class="order-1 md:order-2 md:w-2/5 relative w-full flex justify-center items-end z-10">
                     <div class="relative w-full flex justify-center overflow-hidden md:overflow-visible">
                         <img src="hero_cutout.png" alt="Vladyslava Tsarenko" class="w-auto min-w-[160%] -ml-[30%] md:min-w-0 md:ml-0 max-h-[60vh] md:max-h-[85vh] object-contain drop-shadow-2xl">
                         
-                        <div class="absolute bottom-0 w-full h-[350px] mobile-hero-fade md:hidden"></div>
+                        <!-- Fade for overlap on mobile (Balanced height) -->
+                        <div class="absolute bottom-0 w-full h-72 mobile-hero-fade md:hidden"></div>
                         <div class="absolute bottom-0 w-full h-32 hero-gradient hidden md:block"></div>
                     </div>
                 </div>
 
-                <!-- Text Content -->
-                <div class="order-2 md:order-1 md:w-3/5 pb-12 md:pb-24 z-20 -mt-80 md:mt-0 relative pointer-events-none md:pointer-events-auto">
+                <!-- Text Content (ORDER 2 on Mobile - MODERATE OVERLAP) -->
+                <!-- Изменил -mt-80 на -mt-40 -->
+                <div class="order-2 md:order-1 md:w-3/5 pb-12 md:pb-24 z-20 -mt-40 md:mt-0 relative pointer-events-none md:pointer-events-auto">
                     <div class="pointer-events-auto">
                         <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 text-center md:text-left drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] relative z-20">
                             ЗРОБИЛА ПРОДАЖІВ ЧЕРЕЗ БЛОГ НА <br class="md:hidden"> <span class="text-evo-red whitespace-nowrap">7 000 000+ ГРН</span>
@@ -171,7 +173,7 @@
         </div>
     </section>
 
-    <!-- 2. BONUSES (FIXED IMAGE FIT) -->
+    <!-- 2. BONUSES -->
     <section class="py-20 bg-evo-card border-t border-white/5">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-light uppercase text-center mb-12">Бонуси для <span class="font-bold text-evo-red">всіх учасників</span></h2>
@@ -179,7 +181,6 @@
             <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
                 <!-- Bonus 1 -->
                 <div class="glass-card p-6 rounded-none border-l-4 border-l-evo-red hover:bg-white/5 transition-all flex flex-col sm:flex-row items-center gap-6">
-                    <!-- Changed object-cover to object-contain -->
                     <img src="bonus_1.jpg" alt="Планер" class="w-56 h-40 md:w-64 md:h-48 bg-black object-contain rounded-lg shadow-2xl border border-white/10 shrink-0">
                     <div class="text-center sm:text-left">
                         <h3 class="text-xl md:text-2xl font-bold mb-3 leading-tight">Планер цілей 2026</h3>
@@ -188,7 +189,6 @@
                 </div>
                 <!-- Bonus 2 -->
                 <div class="glass-card p-6 rounded-none border-l-4 border-l-evo-red hover:bg-white/5 transition-all flex flex-col sm:flex-row items-center gap-6">
-                    <!-- Changed object-cover to object-contain -->
                     <img src="bonus_2.jpg" alt="Схема" class="w-56 h-40 md:w-64 md:h-48 bg-black object-contain rounded-lg shadow-2xl border border-white/10 shrink-0">
                     <div class="text-center sm:text-left">
                         <h3 class="text-xl md:text-2xl font-bold mb-3 leading-tight">Схема контентної воронки</h3>
