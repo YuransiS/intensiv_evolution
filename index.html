@@ -594,7 +594,11 @@
                         btn.hidden = true;
                         msg.classList.remove('hidden');
                         form.reset();
-                        if(typeof fbq !== 'undefined') fbq('track', 'Lead');
+                        // Проверяем, был ли уже отправлен лид в этой сессии
+                        if (!sessionStorage.getItem('leadSent')) {
+                            if(typeof fbq !== 'undefined') fbq('track', 'Lead');
+                            sessionStorage.setItem('leadSent', 'true'); // Ставим метку, что лид отправлен
+                        }
                     })
                     .catch(error => {
                         console.error('Error!', error.message);
@@ -606,4 +610,5 @@
     </script>
 </body>
 </html>
+
 
